@@ -8,18 +8,18 @@
 import SwiftUI
 
 struct MainView: View {
+
+    @State private var scrollPosition: Int?
+
     var body: some View {
-        ZStack(alignment: .bottom) {
+        VStack {
             ScrollView {
                 VStack(spacing: 0) {
                     ForEach(0..<20) { index in
-                        ImageLoaderView(urlString: Constants.randomImage)
+                        HeroCellView(title: "cat number \(index)")
                             .frame(maxWidth: .infinity)
-                            .overlay {
-                                Text("\(index)")
-                                    .foregroundStyle(.white)
-                            }
                             .containerRelativeFrame(.vertical, alignment: .center)
+                            .id(index)
                     }
                 }
             }
@@ -27,7 +27,13 @@ struct MainView: View {
             .scrollTargetLayout()
             .scrollTargetBehavior(.paging)
             .scrollBounceBehavior(.basedOnSize)
+            .scrollPosition(id: $scrollPosition, anchor: .center)
+            .animation(.smooth, value: scrollPosition)
+            InteractionsView {
+                scrollPosition = (0..<20).randomElement() ?? 0
+            }
         }
+        .background(Color.accent.opacity(0.4))
     }
 }
 

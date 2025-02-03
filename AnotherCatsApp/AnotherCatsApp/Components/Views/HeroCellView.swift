@@ -22,7 +22,7 @@ struct HeroCellView: View {
                     .fill(.accent)
             }
         }
-        .overlay(alignment: .bottomLeading) {
+        .overlay(alignment: .bottomTrailing) {
             VStack(alignment: .leading, spacing: 4) {
                 if let title {
                     Text(title)
@@ -38,7 +38,6 @@ struct HeroCellView: View {
             .frame(maxWidth: .infinity, alignment: .leading)
             .addingGradientBackgroundForText()
         }
-        .clipShape(RoundedRectangle(cornerRadius: 16))
     }
 }
 
