@@ -1,0 +1,46 @@
+{
+  "configurations" : [
+    {
+      "id" : "D40CE374-3A6B-47D3-B550-C4C0293D1170",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:AnotherCatsApp.xcodeproj",
+      "identifier" : "000D5AAF2D515D04002AED53",
+      "name" : "AnotherCatsApp"
+    }
+  },
+  "testTargets" : [
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:AnotherCatsApp.xcodeproj",
+        "identifier" : "000D5ABF2D515D06002AED53",
+        "name" : "AnotherCatsAppTests"
+      }
+    },
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:AnotherCatsApp.xcodeproj",
+        "identifier" : "000D5AC92D515D06002AED53",
+        "name" : "AnotherCatsAppUITests"
+      }
+    },
+    {
+      "enabled" : false,
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:AnotherCatsApp.xcodeproj",
+        "identifier" : "000D5EC72D518AE8002AED53",
+        "name" : "NetworkingTests"
+      }
+    }
+  ],
+  "version" : 1
+}

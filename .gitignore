@@ -64,3 +64,5 @@ fastlane/test_output
 *.xcworkspacedata
 
 .DS_Store
+
+AnotherCatsApp/AnotherCatsApp/Core/Secrets.xcconfig

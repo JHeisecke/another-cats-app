@@ -55,8 +55,6 @@ struct InteractionsView: View {
 }
 
 #Preview {
-    InteractionsView() {
-        
-    }
+    InteractionsView(interactionPressed: { })
     .background(.accent.opacity(0.2))
 }
