@@ -18,7 +18,7 @@ class CatsFeedViewModelTests {
 
     init() {
         repository = MockCatsRepository()
-        viewModel = CatsFeedViewModel(repository: repository)
+        viewModel = CatsFeedViewModel(debouncer: Debouncer(delay: 0), repository: repository)
     }
 
     deinit {
@@ -29,7 +29,7 @@ class CatsFeedViewModelTests {
     @Test func testGetCatsFeed_Success() async throws {
         repository.result = .success(CatsListResponse.mocks)
         await viewModel.getCatsFeed()
-        #expect(viewModel.cats.count == 10 && viewModel.viewState == .data)
+        #expect(viewModel.cats.count == CatsListResponse.mocks.count && viewModel.viewState == .data)
     }
 
     @Test func testGetCatsFeed_SuccessEmpty() async throws {
@@ -52,4 +52,34 @@ class CatsFeedViewModelTests {
         #expect(viewModel.showAlert != nil && viewModel.viewState == .data)
     }
 
+    @Test func testInteractWithCat_ScrollsToNextCat() async throws {
+        repository.result = .success(CatsListResponse.mocks)
+
+        await viewModel.getCatsFeed()
+
+        let firstCatId = viewModel.cats.first!.id
+        let secondCatId = viewModel.cats[1].id
+
+        viewModel.interactWithCat(currentCatId: firstCatId)
+
+        try await Task.sleep(for: .seconds(0.3))
+
+        #expect(viewModel.scrollPosition == secondCatId)
+    }
+
+    @Test func testInteractWithCat_FetchesMoreCatsWhenNearEnd() async throws {
+        repository.result = .success(CatsListResponse.mocks)
+
+        await viewModel.getCatsFeed()
+
+        let lastFetchIndex = viewModel.cats.count - 5
+        let catBeforeFetchId = viewModel.cats[lastFetchIndex].id
+
+        repository.result = .success(CatsListResponse.mocks)
+        viewModel.interactWithCat(currentCatId: catBeforeFetchId)
+
+        try await Task.sleep(for: .seconds(0.3))
+
+        #expect(viewModel.cats.count == CatsListResponse.mocks.count*2)
+    }
 }

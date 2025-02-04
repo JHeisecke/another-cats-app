@@ -30,7 +30,7 @@ class CatsFeedViewModel {
     private var isLoading = false
 
     private(set) var page = 0
-    private(set) var viewState: ViewState = .firstLoad
+    private(set) var viewState: ViewState
     private(set) var cats: CatsList = []
 
     var scrollPosition: String?
@@ -38,9 +38,10 @@ class CatsFeedViewModel {
 
     // MARK: - Initialization
 
-    init(repository: CatsRepositoryProtocol) {
+    init(debouncer: Debouncer = Debouncer(delay: 0.3), repository: CatsRepositoryProtocol) {
         self.repository = repository
-        self.debouncer = Debouncer(delay: 0.3)
+        self.viewState = .firstLoad
+        self.debouncer = debouncer
     }
 
     deinit {
