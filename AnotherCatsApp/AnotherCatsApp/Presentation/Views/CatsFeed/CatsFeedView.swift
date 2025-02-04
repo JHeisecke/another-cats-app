@@ -45,7 +45,7 @@ struct CatsFeedView: View {
     private func scrollableCats() -> some View {
         VStack {
             ScrollView {
-                VStack(spacing: 0) {
+                LazyVStack(spacing: 0) {
                     ForEach(viewModel.cats) { cat in
                         HeroCellView(
                             title: cat.breeds,
