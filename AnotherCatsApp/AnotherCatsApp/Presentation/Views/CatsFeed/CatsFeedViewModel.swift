@@ -29,6 +29,7 @@ class CatsFeedViewModel {
     private let repository: CatsRepositoryProtocol
     private var isLoading = false
 
+    private var limit: Int = Constants.numberOfCatsPerPage
     private(set) var page = 0
     private(set) var viewState: ViewState
     private(set) var cats: CatsList = []
@@ -50,7 +51,7 @@ class CatsFeedViewModel {
 
     // MARK: - Actions
 
-    func getCatsFeed(limit: Int = Constants.numberOfCatsPerPage) async {
+    func getCatsFeed() async {
         guard !isLoading else { return }
         isLoading = true
 
@@ -103,9 +104,10 @@ class CatsFeedViewModel {
 
 extension CatsFeedViewModel {
     #if DEBUG
-    convenience init(debouncer: Debouncer = Debouncer(delay: 0.3), repository: CatsRepositoryProtocol, page: Int) {
-        self.init(debouncer: debouncer, repository: repository)
+    convenience init(repository: CatsRepositoryProtocol, page: Int, limit: Int) {
+        self.init(debouncer: Debouncer(delay: 0), repository: repository)
         self.page = page
+        self.limit = limit
     }
     #endif
 }

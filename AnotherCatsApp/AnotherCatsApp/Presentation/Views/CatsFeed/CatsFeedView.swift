@@ -24,9 +24,7 @@ struct CatsFeedView: View {
                         .ignoresSafeArea()
                         .background(Color.accent.opacity(0.4))
                 case .empty:
-                    NoCatsView {
-                        await viewModel.getCatsFeed()
-                    }
+                    NoCatsView(reload: viewModel.getCatsFeed)
                 }
             }
             .showCustomAlert(alert: $viewModel.showAlert)
@@ -82,17 +80,16 @@ struct CatsFeedView: View {
 }
 
 #Preview("Feed with Images") {
-    let repository = MockCatsRepository()
-    repository.result = .success(CatsListResponse.mocks)
+    let repository = CatsRepository(apiClient: MockAPIClient())
     return CatsFeedView(viewModel: CatsFeedViewModel(repository: repository))
 }
 
 #Preview("Empty State") {
-    CatsFeedView(viewModel: CatsFeedViewModel(repository: MockCatsRepository()))
+    let repository = CatsRepository(apiClient: MockAPIClient())
+    CatsFeedView(viewModel: CatsFeedViewModel(repository: repository, page: 2, limit: 0))
 }
 
 #Preview("Error") {
-    let repository = MockCatsRepository()
-    repository.result = .failure(CatsError.networkError)
-    return CatsFeedView(viewModel: CatsFeedViewModel(repository: repository))
+    let repository = CatsRepository(apiClient: MockAPIClient())
+    CatsFeedView(viewModel: CatsFeedViewModel(repository: repository, page: 2, limit: 10))
 }
