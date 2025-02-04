@@ -9,22 +9,33 @@ import SwiftUI
 
 struct CatsFeedView: View {
 
+    @State private var selectedCat: CatModel?
     @State var viewModel: CatsFeedViewModel
 
     var body: some View {
-        VStack {
-            switch viewModel.viewState {
-            case .firstLoad:
-                SkeletonHeroCellView()
-            case .data:
-                scrollableCats()
-                    .ignoresSafeArea()
-                    .background(Color.accent.opacity(0.4))
-            case .empty:
-                NoCatsView(reload: viewModel.getCatsFeed)
+        NavigationStack {
+            VStack {
+                switch viewModel.viewState {
+                case .firstLoad:
+                    SkeletonHeroCellView()
+                case .data:
+                    scrollableCats()
+                        .ignoresSafeArea()
+                        .background(Color.accent.opacity(0.4))
+                case .empty:
+                    NoCatsView(reload: viewModel.getCatsFeed)
+                }
             }
+            .showCustomAlert(alert: $viewModel.showAlert)
+            .navigationDestination(isPresented: Binding(ifNotNil: $selectedCat)) {
+                if let selectedCat {
+                    CatDetailView(
+                        cat: selectedCat
+                    )
+                }
+            }
+
         }
-        .showCustomAlert(alert: $viewModel.showAlert)
         .task {
             await viewModel.getCatsFeed()
         }
@@ -36,17 +47,22 @@ struct CatsFeedView: View {
                 VStack(spacing: 0) {
                     ForEach(viewModel.cats.indices, id: \.self) { index in
                         let cat = viewModel.cats[index]
-                        HeroCellView(title: cat.breeds, subtitle: cat.personality, imageName: cat.imageUrl)
-                            .frame(maxWidth: .infinity)
-                            .containerRelativeFrame(.vertical, alignment: .center)
-                            .id(cat.id)
-                            .anyButton {
-
-                            }
+                        HeroCellView(
+                            title: cat.breeds,
+                            subtitle: cat.personality,
+                            imageName: cat.imageUrl
+                        )
+                        .frame(maxWidth: .infinity)
+                        .containerRelativeFrame(.vertical, alignment: .center)
+                        .id(cat.id)
+                        .anyButton {
+                            selectedCat = cat
+                        }
                     }
                 }
             }
             .ignoresSafeArea()
+            .scrollIndicators(.hidden)
             .scrollTargetLayout()
             .scrollTargetBehavior(.paging)
             .scrollBounceBehavior(.basedOnSize)
