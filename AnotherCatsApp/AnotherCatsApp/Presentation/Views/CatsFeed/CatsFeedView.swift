@@ -24,7 +24,9 @@ struct CatsFeedView: View {
                         .ignoresSafeArea()
                         .background(Color.accent.opacity(0.4))
                 case .empty:
-                    NoCatsView(reload: viewModel.getCatsFeed)
+                    NoCatsView {
+                        await viewModel.getCatsFeed()
+                    }
                 }
             }
             .showCustomAlert(alert: $viewModel.showAlert)

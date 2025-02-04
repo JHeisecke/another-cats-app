@@ -1,0 +1,171 @@
+[
+  {
+    "height" : 932,
+    "id" : "1fr",
+    "url" : "https:\/\/cdn2.thecatapi.com\/images\/1fr.jpg",
+    "breeds" : [
+
+    ],
+    "width" : 700
+  },
+  {
+    "height" : 423,
+    "id" : "23q",
+    "url" : "https:\/\/cdn2.thecatapi.com\/images\/23q.jpg",
+    "breeds" : [
+
+    ],
+    "width" : 500
+  },
+  {
+    "height" : 332,
+    "id" : "7ku",
+    "url" : "https:\/\/cdn2.thecatapi.com\/images\/7ku.jpg",
+    "breeds" : [
+
+    ],
+    "width" : 500
+  },
+  {
+    "height" : 351,
+    "id" : "b7i",
+    "url" : "https:\/\/cdn2.thecatapi.com\/images\/b7i.jpg",
+    "breeds" : [
+
+    ],
+    "width" : 500
+  },
+  {
+    "height" : 612,
+    "id" : "ce3",
+    "url" : "https:\/\/cdn2.thecatapi.com\/images\/ce3.jpg",
+    "breeds" : [
+
+    ],
+    "width" : 612
+  },
+  {
+    "height" : 765,
+    "id" : "cpq",
+    "url" : "https:\/\/cdn2.thecatapi.com\/images\/cpq.png",
+    "breeds" : [
+
+    ],
+    "width" : 1024
+  },
+  {
+    "height" : 335,
+    "id" : "MTY5NDczNA",
+    "url" : "https:\/\/cdn2.thecatapi.com\/images\/MTY5NDczNA.jpg",
+    "breeds" : [
+
+    ],
+    "width" : 500
+  },
+  {
+    "height" : 540,
+    "id" : "MjA0OTYyNA",
+    "url" : "https:\/\/cdn2.thecatapi.com\/images\/MjA0OTYyNA.jpg",
+    "breeds" : [
+
+    ],
+    "width" : 720
+  },
+  {
+    "height" : 1350,
+    "id" : "1TcC-kiI1",
+    "url" : "https:\/\/cdn2.thecatapi.com\/images\/1TcC-kiI1.jpg",
+    "breeds" : [
+      {
+        "temperament" : "Active, Loyal, highly intelligent, Expressive, Trainable",
+        "life_span" : "10 - 15",
+        "rex" : 0,
+        "id" : "kora",
+        "cfa_url" : "http:\/\/cfa.org\/Breeds\/BreedsKthruR\/Korat.aspx",
+        "vocalisation" : 3,
+        "natural" : 0,
+        "affection_level" : 5,
+        "experimental" : 0,
+        "shedding_level" : 3,
+        "country_codes" : "TH",
+        "indoor" : 0,
+        "description" : "The Korat is a natural breed, and one of the oldest stable cat breeds. They are highly intelligent and confident cats that can be fearless, although they are startled by loud sounds and sudden movements. Korats form strong bonds with their people and like to cuddle and stay nearby.",
+        "child_friendly" : 4,
+        "health_issues" : 1,
+        "reference_image_id" : "DbwiefiaY",
+        "intelligence" : 5,
+        "adaptability" : 5,
+        "stranger_friendly" : 2,
+        "name" : "Korat",
+        "origin" : "Thailand",
+        "suppressed_tail" : 0,
+        "social_needs" : 5,
+        "grooming" : 1,
+        "short_legs" : 0,
+        "vetstreet_url" : "http:\/\/www.vetstreet.com\/cats\/korat",
+        "hairless" : 0,
+        "wikipedia_url" : "https:\/\/en.wikipedia.org\/wiki\/Korat",
+        "country_code" : "TH",
+        "vcahospitals_url" : "https:\/\/vcahospitals.com\/know-your-pet\/cat-breeds\/korat",
+        "energy_level" : 3,
+        "hypoallergenic" : 0,
+        "rare" : 1,
+        "weight" : {
+          "metric" : "3 - 5",
+          "imperial" : "7 - 11"
+        },
+        "dog_friendly" : 5
+      }
+    ],
+    "width" : 1080
+  },
+  {
+    "height" : 733,
+    "id" : "A_G4pf_T3",
+    "url" : "https:\/\/cdn2.thecatapi.com\/images\/A_G4pf_T3.jpg",
+    "breeds" : [
+      {
+        "temperament" : "Active, Agile, Curious, Demanding, Friendly, Gentle, Lively, Playful, Social",
+        "life_span" : "12 - 14",
+        "rex" : 0,
+        "id" : "ocic",
+        "cfa_url" : "http:\/\/cfa.org\/Breeds\/BreedsKthruR\/Ocicat.aspx",
+        "vocalisation" : 3,
+        "natural" : 0,
+        "affection_level" : 5,
+        "experimental" : 0,
+        "shedding_level" : 3,
+        "country_codes" : "US",
+        "indoor" : 0,
+        "description" : "Loyal and devoted to their owners, the Ocicat is intelligent, confident, outgoing, and seems to have many dog traits. They can be trained to fetch toys, walk on a lead, taught to 'speak', come when called, and follow other commands. ",
+        "child_friendly" : 4,
+        "health_issues" : 3,
+        "reference_image_id" : "JAx-08Y0n",
+        "intelligence" : 5,
+        "adaptability" : 5,
+        "stranger_friendly" : 5,
+        "name" : "Ocicat",
+        "alt_names" : "",
+        "origin" : "United States",
+        "suppressed_tail" : 0,
+        "social_needs" : 5,
+        "grooming" : 1,
+        "short_legs" : 0,
+        "vetstreet_url" : "http:\/\/www.vetstreet.com\/cats\/ocicat",
+        "hairless" : 0,
+        "wikipedia_url" : "https:\/\/en.wikipedia.org\/wiki\/Ocicat",
+        "country_code" : "US",
+        "vcahospitals_url" : "https:\/\/vcahospitals.com\/know-your-pet\/cat-breeds\/ocicat",
+        "energy_level" : 5,
+        "hypoallergenic" : 1,
+        "rare" : 0,
+        "weight" : {
+          "metric" : "3 - 7",
+          "imperial" : "7 - 15"
+        },
+        "dog_friendly" : 5
+      }
+    ],
+    "width" : 1100
+  }
+]

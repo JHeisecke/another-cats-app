@@ -19,6 +19,8 @@ protocol Endpoint {
     var headers: [String: String] { get }
     var body: [AnyHashable: Any]? { get }
     var queryParams: [URLQueryItem]? { get }
+
+    var mockFile: String? { get }
 }
 
 extension Endpoint {

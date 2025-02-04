@@ -38,7 +38,7 @@ class CatsFeedViewModel {
 
     // MARK: - Initialization
 
-    init(debouncer: Debouncer = Debouncer(delay: 0.3), repository: CatsRepositoryProtocol) {
+    required init(debouncer: Debouncer = Debouncer(delay: 0.3), repository: CatsRepositoryProtocol) {
         self.repository = repository
         self.viewState = .firstLoad
         self.debouncer = debouncer
@@ -50,7 +50,7 @@ class CatsFeedViewModel {
 
     // MARK: - Actions
 
-    func getCatsFeed() async {
+    func getCatsFeed(limit: Int = Constants.numberOfCatsPerPage) async {
         guard !isLoading else { return }
         isLoading = true
 
@@ -59,7 +59,7 @@ class CatsFeedViewModel {
         }
 
         do {
-            let response = try await repository.getCats(limit: Constants.numberOfCatsPerPage, page: page)
+            let response = try await repository.getCats(limit: limit, page: page)
             guard !response.isEmpty else {
                 if cats.isEmpty {
                     viewState = .empty
@@ -97,4 +97,15 @@ class CatsFeedViewModel {
             }
         }
     }
+}
+
+// MARK: - Testing Init
+
+extension CatsFeedViewModel {
+    #if DEBUG
+    convenience init(debouncer: Debouncer = Debouncer(delay: 0.3), repository: CatsRepositoryProtocol, page: Int) {
+        self.init(debouncer: debouncer, repository: repository)
+        self.page = page
+    }
+    #endif
 }

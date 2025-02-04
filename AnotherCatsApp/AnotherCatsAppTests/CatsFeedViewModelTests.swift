@@ -14,11 +14,12 @@ import Combine
 class CatsFeedViewModelTests {
 
     var viewModel: CatsFeedViewModel!
-    var repository: MockCatsRepository!
+    var repository: CatsRepositoryProtocol!
+    var debouncer: Debouncer
 
     init() {
-        repository = MockCatsRepository()
-        viewModel = CatsFeedViewModel(debouncer: Debouncer(delay: 0), repository: repository)
+        repository = CatsRepository(apiClient: MockAPIClient())
+        debouncer = Debouncer(delay: 0)
     }
 
     deinit {
@@ -27,34 +28,32 @@ class CatsFeedViewModelTests {
     }
 
     @Test func testGetCatsFeed_Success() async throws {
-        repository.result = .success(CatsListResponse.mocks)
+        viewModel = CatsFeedViewModel(debouncer: debouncer, repository: repository)
         await viewModel.getCatsFeed()
-        #expect(viewModel.cats.count == CatsListResponse.mocks.count && viewModel.viewState == .data)
+        #expect(viewModel.cats.count == 10 && viewModel.viewState == .data)
     }
 
-    @Test func testGetCatsFeed_SuccessEmpty() async throws {
-        repository.result = .success([])
-        await viewModel.getCatsFeed()
+    @Test func testGetCatsFeed_SuccessIsEmpty() async throws {
+        viewModel = CatsFeedViewModel(debouncer: debouncer, repository: repository)
+        await viewModel.getCatsFeed(limit: 0)
         #expect(viewModel.viewState == .empty)
     }
 
-    @Test func testGetCatsFeed_Failure() async throws {
-        repository.result = .failure(CatsError.networkError)
+    @Test func testGetCatsFeed_FailureIsEmpty() async throws {
+        viewModel = CatsFeedViewModel(debouncer: debouncer, repository: repository, page: 2)
         await viewModel.getCatsFeed()
         #expect(viewModel.showAlert != nil && viewModel.viewState == .empty)
     }
 
-    @Test func testGetCatsFeed_FailureOnSecondtry() async throws {
-        repository.result = .success(CatsListResponse.mocks)
+    @Test func testGetCatsFeed_FailureOnSecondTry() async throws {
+        viewModel = CatsFeedViewModel(debouncer: debouncer, repository: repository, page: 1)
         await viewModel.getCatsFeed()
-        repository.result = .failure(CatsError.networkError)
         await viewModel.getCatsFeed()
         #expect(viewModel.showAlert != nil && viewModel.viewState == .data)
     }
 
     @Test func testInteractWithCat_ScrollsToNextCat() async throws {
-        repository.result = .success(CatsListResponse.mocks)
-
+        viewModel = CatsFeedViewModel(debouncer: debouncer, repository: repository)
         await viewModel.getCatsFeed()
 
         let firstCatId = viewModel.cats.first!.id
@@ -68,14 +67,12 @@ class CatsFeedViewModelTests {
     }
 
     @Test func testInteractWithCat_FetchesMoreCatsWhenNearEnd() async throws {
-        repository.result = .success(CatsListResponse.mocks)
-
+        viewModel = CatsFeedViewModel(debouncer: debouncer, repository: repository)
         await viewModel.getCatsFeed()
 
         let lastFetchIndex = viewModel.cats.count - 5
         let catBeforeFetchId = viewModel.cats[lastFetchIndex].id
 
-        repository.result = .success(CatsListResponse.mocks)
         viewModel.interactWithCat(currentCatId: catBeforeFetchId)
 
         try await Task.sleep(for: .seconds(0.3))
