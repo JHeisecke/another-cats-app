@@ -58,6 +58,7 @@ struct InteractionsView: View {
             }
             .shadow(color: Color.accent.opacity(0.4), radius: 8, x: 0, y: 5)
             .anyButton(.press) {
+                UIImpactFeedbackGenerator(style: .rigid).impactOccurred()
                 interactionPressed()
             }
     }

@@ -77,17 +77,14 @@ class CatsFeedViewModel {
         }
     }
 
-    func fetchMoreCatsIfNecessary(currentCatId: String) {
-        guard let firstIndex = cats.firstIndex(where: { $0.id == currentCatId }) else { return }
-        Task {
-            if firstIndex >= cats.count/2 {
-                await getCatsFeed()
-            }
-        }
-    }
-
     func interactWithCat(currentCatId: String) {
         guard let firstIndex = cats.firstIndex(where: { $0.id == currentCatId }), firstIndex < cats.count else { return }
         scrollPosition = cats[firstIndex + 1].id
+
+        Task {
+            if firstIndex >= cats.count - 5 {
+                await getCatsFeed()
+            }
+        }
     }
 }

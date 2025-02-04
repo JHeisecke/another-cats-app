@@ -10,7 +10,14 @@ import SwiftUI
 struct AppView: View {
 
     var body: some View {
-        CatsFeedView(viewModel: CatsFeedViewModel(repository: CatsRepository(apiClient: APIClient())))
+        CatsFeedView(
+            viewModel: CatsFeedViewModel(
+                repository: CatsRepository(
+                    apiClient: APIClient()
+                )
+            )
+        )
+        .preferredColorScheme(.light)
     }
 }
 

@@ -46,8 +46,7 @@ struct CatsFeedView: View {
         VStack {
             ScrollView {
                 VStack(spacing: 0) {
-                    ForEach(viewModel.cats.indices, id: \.self) { index in
-                        let cat = viewModel.cats[index]
+                    ForEach(viewModel.cats) { cat in
                         HeroCellView(
                             title: cat.breeds,
                             subtitle: cat.personality,
@@ -70,11 +69,6 @@ struct CatsFeedView: View {
             .scrollDisabled(true)
             .scrollPosition(id: $viewModel.scrollPosition, anchor: .center)
             .animation(.default, value: viewModel.scrollPosition)
-            .onChange(of: viewModel.scrollPosition) { _, scrollPosition in
-                if let scrollPosition = viewModel.scrollPosition {
-                    viewModel.fetchMoreCatsIfNecessary(currentCatId: scrollPosition)
-                }
-            }
             InteractionsView {
                 if let scrollPosition = viewModel.scrollPosition {
                     viewModel.interactWithCat(currentCatId: scrollPosition)
