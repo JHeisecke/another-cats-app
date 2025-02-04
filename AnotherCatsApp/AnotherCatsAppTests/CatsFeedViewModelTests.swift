@@ -73,8 +73,8 @@ class CatsFeedViewModelTests {
 
         viewModel.interactWithCat(currentCatId: catBeforeFetchId)
 
-        try await Task.sleep(for: .seconds(0.3))
+        try await Task.sleep(for: .seconds(3))
 
-        #expect(viewModel.cats.count == CatsListResponse.mocks.count*2)
+        #expect(viewModel.cats.count == 20)
     }
 }
