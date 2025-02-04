@@ -37,6 +37,7 @@ struct CatDetailView: View {
                     ratingRow(label: "Shedding Level", rating: cat.sheddingLevel)
                 }
                 .padding()
+                .padding(.bottom)
 
                 Spacer()
             }

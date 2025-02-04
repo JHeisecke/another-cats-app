@@ -25,6 +25,7 @@ class CatsFeedViewModel {
 
     // MARK: - Properties
 
+    private let debouncer: Debouncer
     private let repository: CatsRepositoryProtocol
     private var isLoading = false
 
@@ -39,6 +40,11 @@ class CatsFeedViewModel {
 
     init(repository: CatsRepositoryProtocol) {
         self.repository = repository
+        self.debouncer = Debouncer(delay: 0.3)
+    }
+
+    deinit {
+        debouncer.cancel()
     }
 
     // MARK: - Actions
@@ -78,12 +84,15 @@ class CatsFeedViewModel {
     }
 
     func interactWithCat(currentCatId: String) {
-        guard let firstIndex = cats.firstIndex(where: { $0.id == currentCatId }), firstIndex < cats.count else { return }
-        scrollPosition = cats[firstIndex + 1].id
+        debouncer.call { [weak self] in
+            guard let self else { return }
+            guard let firstIndex = cats.firstIndex(where: { $0.id == currentCatId }), firstIndex < cats.count else { return }
+            scrollPosition = cats[firstIndex + 1].id
 
-        Task {
-            if firstIndex >= cats.count - 5 {
-                await getCatsFeed()
+            Task {
+                if firstIndex >= self.cats.count - 5 {
+                    await self.getCatsFeed()
+                }
             }
         }
     }
