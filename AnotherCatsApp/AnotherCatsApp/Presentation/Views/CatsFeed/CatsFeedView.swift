@@ -40,7 +40,7 @@ struct CatsFeedView: View {
                         HeroCellView(title: cat.breeds, subtitle: cat.personality, imageName: cat.imageUrl)
                             .frame(maxWidth: .infinity)
                             .containerRelativeFrame(.vertical, alignment: .center)
-                            .id(index)
+                            .id(cat.id)
                     }
                 }
             }
@@ -50,8 +50,15 @@ struct CatsFeedView: View {
             .scrollBounceBehavior(.basedOnSize)
             .scrollPosition(id: $viewModel.scrollPosition, anchor: .center)
             .animation(.default, value: viewModel.scrollPosition)
+            .onChange(of: viewModel.scrollPosition) { _, scrollPosition in
+                if let scrollPosition = viewModel.scrollPosition {
+                    viewModel.fetchMoreCatsIfNecessary(currentCatId: scrollPosition)
+                }
+            }
             InteractionsView {
-                viewModel.interactWithCat()
+                if let scrollPosition = viewModel.scrollPosition {
+                    viewModel.interactWithCat(currentCatId: scrollPosition)
+                }
             }
             .padding(.bottom)
         }

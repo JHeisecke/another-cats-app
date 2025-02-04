@@ -10,6 +10,7 @@ import Combine
 
 @testable import AnotherCatsApp
 
+@MainActor
 class CatsFeedViewModelTests {
 
     var viewModel: CatsFeedViewModel!

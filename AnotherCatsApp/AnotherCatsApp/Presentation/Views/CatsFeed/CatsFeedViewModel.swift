@@ -7,6 +7,7 @@
 
 import Foundation
 
+@MainActor
 @Observable
 class CatsFeedViewModel {
 
@@ -25,12 +26,13 @@ class CatsFeedViewModel {
     // MARK: - Properties
 
     private let repository: CatsRepositoryProtocol
+    private var isLoading = false
 
     private(set) var page = 0
     private(set) var viewState: ViewState = .firstLoad
     private(set) var cats: CatsList = []
 
-    var scrollPosition: Int?
+    var scrollPosition: String?
     var showAlert: CustomAlert?
 
     // MARK: - Initialization
@@ -42,6 +44,13 @@ class CatsFeedViewModel {
     // MARK: - Actions
 
     func getCatsFeed() async {
+        guard !isLoading else { return }
+        isLoading = true
+
+        defer {
+            isLoading = false
+        }
+
         do {
             let response = try await repository.getCats(limit: Constants.numberOfCatsPerPage, page: page)
             guard !response.isEmpty else {
@@ -53,9 +62,11 @@ class CatsFeedViewModel {
                 return
             }
             viewState = .data
+            if cats.isEmpty {
+                scrollPosition = response.first?.id
+            }
             cats.append(contentsOf: response)
             page += 1
-            scrollPosition = 0
         } catch {
             if cats.isEmpty {
                 showAlert = CustomAlert(error: error)
@@ -66,14 +77,17 @@ class CatsFeedViewModel {
         }
     }
 
-    func interactWithCat() {
-        guard let catIndex = scrollPosition else { return }
+    func fetchMoreCatsIfNecessary(currentCatId: String) {
+        guard let firstIndex = cats.firstIndex(where: { $0.id == currentCatId }) else { return }
         Task {
-            if catIndex >= cats.count - 1 {
+            if firstIndex >= cats.count/2 {
                 await getCatsFeed()
-            } else {
-                scrollPosition = catIndex + 1
             }
         }
+    }
+
+    func interactWithCat(currentCatId: String) {
+        guard let firstIndex = cats.firstIndex(where: { $0.id == currentCatId }), firstIndex < cats.count else { return }
+        scrollPosition = cats[firstIndex + 1].id
     }
 }
