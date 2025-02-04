@@ -9,18 +9,22 @@ import SwiftUI
 
 struct AppView: View {
 
+    let catFeedViewModel: CatsFeedViewModel
+
     var body: some View {
         CatsFeedView(
-            viewModel: CatsFeedViewModel(
-                repository: CatsRepository(
-                    apiClient: APIClient()
-                )
-            )
+            viewModel: catFeedViewModel
         )
         .preferredColorScheme(.light)
     }
 }
 
 #Preview {
-    AppView()
+    AppView(
+        catFeedViewModel: CatsFeedViewModel(
+            repository: CatsRepository(
+                apiClient: MockAPIClient()
+            )
+        )
+    )
 }

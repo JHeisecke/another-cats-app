@@ -43,6 +43,7 @@ struct InteractionsView: View {
                 interactionPressed()
                 UIImpactFeedbackGenerator(style: .medium).impactOccurred()
             }
+            .accessibilityIdentifier(AccessibilityIdentifiers.likeButton)
     }
 
     var dislikeButton: some View {
@@ -61,6 +62,7 @@ struct InteractionsView: View {
                 UIImpactFeedbackGenerator(style: .rigid).impactOccurred()
                 interactionPressed()
             }
+            .accessibilityIdentifier(AccessibilityIdentifiers.dislikeButton)
     }
 }
 

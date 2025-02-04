@@ -42,6 +42,7 @@ struct CatDetailView: View {
                 Spacer()
             }
         }
+        .scrollIndicators(.hidden)
         .toolbarVisibility(.hidden, for: .navigationBar)
         .ignoresSafeArea()
         .background(Color.accent.opacity(0.1))
@@ -57,6 +58,7 @@ struct CatDetailView: View {
                     dismiss()
                 }
                 .padding()
+                .accessibilityIdentifier(AccessibilityIdentifiers.closeDetailButton)
         }
     }
 

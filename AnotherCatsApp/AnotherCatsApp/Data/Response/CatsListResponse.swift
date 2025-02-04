@@ -29,28 +29,6 @@ struct CatResponse: Codable {
         let sheddingLevel, socialNeeds, strangerFriendly, vocalisation: Int?
         let experimental, hairless, natural, rare, rex: Int?
         let shortLegs, suppressedTail, hypoallergenic, indoor: Int?
-
-        enum CodingKeys: String, CodingKey {
-            case id, name, temperament, origin, description
-            case lifeSpan = "life_span"
-            case countryCodes = "country_codes"
-            case countryCode = "country_code"
-            case wikipediaURL = "wikipedia_url"
-            case vetstreetURL = "vetstreet_url"
-            case referenceImageID = "reference_image_id"
-            case weight, adaptability, affectionLevel = "affection_level"
-            case childFriendly = "child_friendly"
-            case dogFriendly = "dog_friendly"
-            case energyLevel = "energy_level"
-            case grooming, healthIssues = "health_issues"
-            case intelligence, sheddingLevel = "shedding_level"
-            case socialNeeds = "social_needs"
-            case strangerFriendly = "stranger_friendly"
-            case vocalisation, experimental, hairless, natural, rare, rex
-            case shortLegs = "short_legs"
-            case suppressedTail = "suppressed_tail"
-            case hypoallergenic, indoor
-        }
     }
 
     // MARK: Weight

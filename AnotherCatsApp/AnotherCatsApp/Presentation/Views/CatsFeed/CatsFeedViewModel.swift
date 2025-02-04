@@ -109,5 +109,16 @@ extension CatsFeedViewModel {
         self.page = page
         self.limit = limit
     }
+
+    convenience init(repository: CatsRepositoryProtocol, isUITesting: Bool) {
+        self.init(debouncer: Debouncer(delay: 0), repository: repository)
+        if Utilities.hasError {
+            self.page = 2
+            self.limit = 10
+        } else if Utilities.isEmptyFeed {
+            self.page = 0
+            self.limit = 0
+        }
+    }
     #endif
 }

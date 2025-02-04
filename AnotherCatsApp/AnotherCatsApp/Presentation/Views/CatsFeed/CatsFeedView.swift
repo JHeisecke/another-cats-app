@@ -58,6 +58,7 @@ struct CatsFeedView: View {
                         .anyButton {
                             selectedCat = cat
                         }
+                        .accessibilityIdentifier(AccessibilityIdentifiers.catImage(cat.id))
                     }
                 }
             }

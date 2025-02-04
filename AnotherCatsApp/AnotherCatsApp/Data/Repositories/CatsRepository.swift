@@ -15,6 +15,7 @@ struct CatsRepository: CatsRepositoryProtocol {
     init(apiClient: APIClientProtocol) {
         self.apiClient = apiClient
         self.decoder = JSONDecoder()
+        decoder.keyDecodingStrategy = .convertFromSnakeCase
         self.session = URLSession(configuration: .default)
     }
 

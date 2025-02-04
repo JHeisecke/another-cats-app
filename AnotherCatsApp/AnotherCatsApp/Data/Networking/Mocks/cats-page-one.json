@@ -1,219 +1,292 @@
 [
-  {
-    "height" : 180,
-    "id" : "7l",
-    "categories" : [
-      {
-        "id" : 3,
-        "name" : "funny"
-      }
-    ],
-    "url" : "https:\/\/cdn2.thecatapi.com\/images\/7l.gif",
-    "breeds" : [
+    {
+        "height" : 466,
+        "id" : "fhYh2PDcC",
+        "url" : "https:\/\/cdn2.thecatapi.com\/images\/fhYh2PDcC.jpg",
+        "breeds" : [
+            {
+                "temperament" : "Easy Going, Intelligent, Loyal, Playful, Social",
+                "life_span" : "12 - 14",
+                "rex" : 0,
+                "id" : "manx",
+                "cfa_url" : "http:\/\/cfa.org\/Breeds\/BreedsKthruR\/Manx.aspx",
+                "vocalisation" : 3,
+                "natural" : 1,
+                "affection_level" : 5,
+                "experimental" : 0,
+                "shedding_level" : 5,
+                "country_codes" : "IM",
+                "indoor" : 0,
+                "description" : "The Manx is a placid, sweet cat that is gentle and playful. She never seems to get too upset about anything. She is a loving companion and adores being with people.",
+                "lap" : 1,
+                "child_friendly" : 4,
+                "health_issues" : 3,
+                "reference_image_id" : "fhYh2PDcC",
+                "intelligence" : 5,
+                "adaptability" : 5,
+                "stranger_friendly" : 3,
+                "name" : "Manx",
+                "alt_names" : "Manks, Stubbin, Rumpy",
+                "origin" : "Isle of Man",
+                "suppressed_tail" : 1,
+                "social_needs" : 5,
+                "grooming" : 1,
+                "short_legs" : 0,
+                "vetstreet_url" : "http:\/\/www.vetstreet.com\/cats\/manx",
+                "hairless" : 0,
+                "wikipedia_url" : "https:\/\/en.wikipedia.org\/wiki\/Manx_(cat)",
+                "country_code" : "IM",
+                "vcahospitals_url" : "https:\/\/vcahospitals.com\/know-your-pet\/cat-breeds\/manx",
+                "energy_level" : 5,
+                "hypoallergenic" : 0,
+                "rare" : 0,
+                "weight" : {
+                    "metric" : "3 - 6",
+                    "imperial" : "7 - 13"
+                },
+                "dog_friendly" : 5
+            }
+        ],
+        "width" : 700
+    },
+    {
+        "height" : 1160,
+        "id" : "JVITS8pXF",
+        "url" : "https:\/\/cdn2.thecatapi.com\/images\/JVITS8pXF.jpg",
+        "breeds" : [
+            {
+                "temperament" : "Affectionate, Intelligent, Loyal, Playful, Social, Sweet, Loving",
+                "life_span" : "11 - 14",
+                "rex" : 0,
+                "id" : "sfol",
+                "cfa_url" : "http:\/\/cfa.org\/Breeds\/BreedsSthruT\/ScottishFold.aspx",
+                "vocalisation" : 1,
+                "natural" : 0,
+                "affection_level" : 5,
+                "experimental" : 0,
+                "shedding_level" : 3,
+                "country_codes" : "GB",
+                "indoor" : 0,
+                "description" : "The Scottish Fold is a sweet, charming breed. She is an easy cat to live with and to care for. She is affectionate and is comfortable with all members of her family. Her tail should be handled gently. Folds are known for sleeping on their backs, and for sitting with their legs stretched out and their paws on their belly. This is called the \"Buddha Position\".",
+                "child_friendly" : 4,
+                "health_issues" : 4,
+                "reference_image_id" : "o9t0LDcsa",
+                "intelligence" : 3,
+                "adaptability" : 5,
+                "stranger_friendly" : 3,
+                "name" : "Scottish Fold",
+                "alt_names" : "Scot Fold",
+                "origin" : "United Kingdom",
+                "suppressed_tail" : 0,
+                "social_needs" : 3,
+                "grooming" : 1,
+                "short_legs" : 0,
+                "vetstreet_url" : "http:\/\/www.vetstreet.com\/cats\/scottish-fold-highland-fold",
+                "hairless" : 0,
+                "wikipedia_url" : "https:\/\/en.wikipedia.org\/wiki\/Scottish_Fold",
+                "country_code" : "GB",
+                "vcahospitals_url" : "https:\/\/vcahospitals.com\/know-your-pet\/cat-breeds\/scottish-fold",
+                "energy_level" : 3,
+                "hypoallergenic" : 0,
+                "rare" : 0,
+                "weight" : {
+                    "metric" : "2 - 5",
+                    "imperial" : "5 - 11"
+                },
+                "dog_friendly" : 5
+            }
+        ],
+        "width" : 1080
+    },
+    {
+        "height" : 1080,
+        "id" : "L5QYxsrYw",
+        "url" : "https:\/\/cdn2.thecatapi.com\/images\/L5QYxsrYw.jpg",
+        "breeds" : [
+            {
+                "temperament" : "Mischievous, Tenacious, Intelligent, Affectionate, Gentle, Interactive, Loyal",
+                "life_span" : "12 - 16",
+                "rex" : 0,
+                "id" : "soma",
+                "cfa_url" : "http:\/\/cfa.org\/Breeds\/BreedsSthruT\/Somali.aspx",
+                "vocalisation" : 1,
+                "natural" : 0,
+                "affection_level" : 5,
+                "experimental" : 0,
+                "shedding_level" : 4,
+                "country_codes" : "SO",
+                "indoor" : 0,
+                "description" : "The Somali lives life to the fullest. He climbs higher, jumps farther, plays harder. Nothing escapes the notice of this highly intelligent and inquisitive cat. Somalis love the company of humans and other animals.",
+                "child_friendly" : 3,
+                "health_issues" : 2,
+                "reference_image_id" : "EPF2ejNS0",
+                "intelligence" : 5,
+                "adaptability" : 5,
+                "stranger_friendly" : 5,
+                "name" : "Somali",
+                "alt_names" : "Fox Cat, Long-Haired Abyssinian",
+                "origin" : "Somalia",
+                "suppressed_tail" : 0,
+                "social_needs" : 5,
+                "grooming" : 3,
+                "short_legs" : 0,
+                "vetstreet_url" : "http:\/\/www.vetstreet.com\/cats\/somali",
+                "hairless" : 0,
+                "wikipedia_url" : "https:\/\/en.wikipedia.org\/wiki\/Somali_(cat)",
+                "country_code" : "SO",
+                "vcahospitals_url" : "https:\/\/vcahospitals.com\/know-your-pet\/cat-breeds\/somali",
+                "energy_level" : 5,
+                "hypoallergenic" : 0,
+                "rare" : 0,
+                "weight" : {
+                    "metric" : "3 - 5",
+                    "imperial" : "6 - 12"
+                },
+                "dog_friendly" : 4
+            }
+        ],
+        "width" : 1080
+    },
+    {
+      "height" : 1350,
+      "id" : "1TcC-kiI1",
+      "url" : "https:\/\/cdn2.thecatapi.com\/images\/1TcC-kiI1.jpg",
+      "breeds" : [
+        {
+          "temperament" : "Active, Loyal, highly intelligent, Expressive, Trainable",
+          "life_span" : "10 - 15",
+          "rex" : 0,
+          "id" : "kora",
+          "cfa_url" : "http:\/\/cfa.org\/Breeds\/BreedsKthruR\/Korat.aspx",
+          "vocalisation" : 3,
+          "natural" : 0,
+          "affection_level" : 5,
+          "experimental" : 0,
+          "shedding_level" : 3,
+          "country_codes" : "TH",
+          "indoor" : 0,
+          "description" : "The Korat is a natural breed, and one of the oldest stable cat breeds. They are highly intelligent and confident cats that can be fearless, although they are startled by loud sounds and sudden movements. Korats form strong bonds with their people and like to cuddle and stay nearby.",
+          "child_friendly" : 4,
+          "health_issues" : 1,
+          "reference_image_id" : "DbwiefiaY",
+          "intelligence" : 5,
+          "adaptability" : 5,
+          "stranger_friendly" : 2,
+          "name" : "Korat",
+          "origin" : "Thailand",
+          "suppressed_tail" : 0,
+          "social_needs" : 5,
+          "grooming" : 1,
+          "short_legs" : 0,
+          "vetstreet_url" : "http:\/\/www.vetstreet.com\/cats\/korat",
+          "hairless" : 0,
+          "wikipedia_url" : "https:\/\/en.wikipedia.org\/wiki\/Korat",
+          "country_code" : "TH",
+          "vcahospitals_url" : "https:\/\/vcahospitals.com\/know-your-pet\/cat-breeds\/korat",
+          "energy_level" : 3,
+          "hypoallergenic" : 0,
+          "rare" : 1,
+          "weight" : {
+            "metric" : "3 - 5",
+            "imperial" : "7 - 11"
+          },
+          "dog_friendly" : 5
+        }
+      ],
+      "width" : 1080
+    },
+    {
+      "height" : 733,
+      "id" : "A_G4pf_T3",
+      "url" : "https:\/\/cdn2.thecatapi.com\/images\/A_G4pf_T3.jpg",
+      "breeds" : [
+        {
+          "temperament" : "Active, Agile, Curious, Demanding, Friendly, Gentle, Lively, Playful, Social",
+          "life_span" : "12 - 14",
+          "rex" : 0,
+          "id" : "ocic",
+          "cfa_url" : "http:\/\/cfa.org\/Breeds\/BreedsKthruR\/Ocicat.aspx",
+          "vocalisation" : 3,
+          "natural" : 0,
+          "affection_level" : 5,
+          "experimental" : 0,
+          "shedding_level" : 3,
+          "country_codes" : "US",
+          "indoor" : 0,
+          "description" : "Loyal and devoted to their owners, the Ocicat is intelligent, confident, outgoing, and seems to have many dog traits. They can be trained to fetch toys, walk on a lead, taught to 'speak', come when called, and follow other commands. ",
+          "child_friendly" : 4,
+          "health_issues" : 3,
+          "reference_image_id" : "JAx-08Y0n",
+          "intelligence" : 5,
+          "adaptability" : 5,
+          "stranger_friendly" : 5,
+          "name" : "Ocicat",
+          "alt_names" : "",
+          "origin" : "United States",
+          "suppressed_tail" : 0,
+          "social_needs" : 5,
+          "grooming" : 1,
+          "short_legs" : 0,
+          "vetstreet_url" : "http:\/\/www.vetstreet.com\/cats\/ocicat",
+          "hairless" : 0,
+          "wikipedia_url" : "https:\/\/en.wikipedia.org\/wiki\/Ocicat",
+          "country_code" : "US",
+          "vcahospitals_url" : "https:\/\/vcahospitals.com\/know-your-pet\/cat-breeds\/ocicat",
+          "energy_level" : 5,
+          "hypoallergenic" : 1,
+          "rare" : 0,
+          "weight" : {
+            "metric" : "3 - 7",
+            "imperial" : "7 - 15"
+          },
+          "dog_friendly" : 5
+        }
+      ],
+      "width" : 1100
+    },
+    {
+        "height" : 536,
+        "id" : "3ls",
+        "url" : "https:\/\/cdn2.thecatapi.com\/images\/3ls.jpg",
+        "breeds" : [
 
-    ],
-    "width" : 320
-  },
-  {
-    "height" : 479,
-    "id" : "2bu",
-    "url" : "https:\/\/cdn2.thecatapi.com\/images\/2bu.jpg",
-    "breeds" : [
+        ],
+        "width" : 800
+    },
+    {
+        "height" : 360,
+        "id" : "ap5",
+        "url" : "https:\/\/cdn2.thecatapi.com\/images\/ap5.jpg",
+        "breeds" : [
 
-    ],
-    "width" : 639
-  },
-  {
-    "height" : 536,
-    "id" : "3ls",
-    "url" : "https:\/\/cdn2.thecatapi.com\/images\/3ls.jpg",
-    "breeds" : [
+        ],
+        "width" : 480
+    },
+    {
+        "height" : 500,
+        "id" : "c23",
+        "url" : "https:\/\/cdn2.thecatapi.com\/images\/c23.jpg",
+        "breeds" : [
 
-    ],
-    "width" : 800
-  },
-  {
-    "height" : 360,
-    "id" : "ap5",
-    "url" : "https:\/\/cdn2.thecatapi.com\/images\/ap5.jpg",
-    "breeds" : [
+        ],
+        "width" : 333
+    },
+    {
+        "height" : 1152,
+        "id" : "d1k",
+        "url" : "https:\/\/cdn2.thecatapi.com\/images\/d1k.jpg",
+        "breeds" : [
+            
+        ],
+        "width" : 1728
+    },
+    {
+        "height" : 667,
+        "id" : "MTcwMTczMg",
+        "url" : "https:\/\/cdn2.thecatapi.com\/images\/MTcwMTczMg.jpg",
+        "breeds" : [
 
-    ],
-    "width" : 480
-  },
-  {
-    "height" : 500,
-    "id" : "c23",
-    "url" : "https:\/\/cdn2.thecatapi.com\/images\/c23.jpg",
-    "breeds" : [
-
-    ],
-    "width" : 333
-  },
-  {
-    "height" : 1152,
-    "id" : "d1k",
-    "url" : "https:\/\/cdn2.thecatapi.com\/images\/d1k.jpg",
-    "breeds" : [
-
-    ],
-    "width" : 1728
-  },
-  {
-    "height" : 667,
-    "id" : "MTcwMTczMg",
-    "url" : "https:\/\/cdn2.thecatapi.com\/images\/MTcwMTczMg.jpg",
-    "breeds" : [
-
-    ],
-    "width" : 500
-  },
-  {
-    "height" : 466,
-    "id" : "fhYh2PDcC",
-    "url" : "https:\/\/cdn2.thecatapi.com\/images\/fhYh2PDcC.jpg",
-    "breeds" : [
-      {
-        "temperament" : "Easy Going, Intelligent, Loyal, Playful, Social",
-        "life_span" : "12 - 14",
-        "rex" : 0,
-        "id" : "manx",
-        "cfa_url" : "http:\/\/cfa.org\/Breeds\/BreedsKthruR\/Manx.aspx",
-        "vocalisation" : 3,
-        "natural" : 1,
-        "affection_level" : 5,
-        "experimental" : 0,
-        "shedding_level" : 5,
-        "country_codes" : "IM",
-        "indoor" : 0,
-        "description" : "The Manx is a placid, sweet cat that is gentle and playful. She never seems to get too upset about anything. She is a loving companion and adores being with people.",
-        "lap" : 1,
-        "child_friendly" : 4,
-        "health_issues" : 3,
-        "reference_image_id" : "fhYh2PDcC",
-        "intelligence" : 5,
-        "adaptability" : 5,
-        "stranger_friendly" : 3,
-        "name" : "Manx",
-        "alt_names" : "Manks, Stubbin, Rumpy",
-        "origin" : "Isle of Man",
-        "suppressed_tail" : 1,
-        "social_needs" : 5,
-        "grooming" : 1,
-        "short_legs" : 0,
-        "vetstreet_url" : "http:\/\/www.vetstreet.com\/cats\/manx",
-        "hairless" : 0,
-        "wikipedia_url" : "https:\/\/en.wikipedia.org\/wiki\/Manx_(cat)",
-        "country_code" : "IM",
-        "vcahospitals_url" : "https:\/\/vcahospitals.com\/know-your-pet\/cat-breeds\/manx",
-        "energy_level" : 5,
-        "hypoallergenic" : 0,
-        "rare" : 0,
-        "weight" : {
-          "metric" : "3 - 6",
-          "imperial" : "7 - 13"
-        },
-        "dog_friendly" : 5
-      }
-    ],
-    "width" : 700
-  },
-  {
-    "height" : 1160,
-    "id" : "JVITS8pXF",
-    "url" : "https:\/\/cdn2.thecatapi.com\/images\/JVITS8pXF.jpg",
-    "breeds" : [
-      {
-        "temperament" : "Affectionate, Intelligent, Loyal, Playful, Social, Sweet, Loving",
-        "life_span" : "11 - 14",
-        "rex" : 0,
-        "id" : "sfol",
-        "cfa_url" : "http:\/\/cfa.org\/Breeds\/BreedsSthruT\/ScottishFold.aspx",
-        "vocalisation" : 1,
-        "natural" : 0,
-        "affection_level" : 5,
-        "experimental" : 0,
-        "shedding_level" : 3,
-        "country_codes" : "GB",
-        "indoor" : 0,
-        "description" : "The Scottish Fold is a sweet, charming breed. She is an easy cat to live with and to care for. She is affectionate and is comfortable with all members of her family. Her tail should be handled gently. Folds are known for sleeping on their backs, and for sitting with their legs stretched out and their paws on their belly. This is called the \"Buddha Position\".",
-        "child_friendly" : 4,
-        "health_issues" : 4,
-        "reference_image_id" : "o9t0LDcsa",
-        "intelligence" : 3,
-        "adaptability" : 5,
-        "stranger_friendly" : 3,
-        "name" : "Scottish Fold",
-        "alt_names" : "Scot Fold",
-        "origin" : "United Kingdom",
-        "suppressed_tail" : 0,
-        "social_needs" : 3,
-        "grooming" : 1,
-        "short_legs" : 0,
-        "vetstreet_url" : "http:\/\/www.vetstreet.com\/cats\/scottish-fold-highland-fold",
-        "hairless" : 0,
-        "wikipedia_url" : "https:\/\/en.wikipedia.org\/wiki\/Scottish_Fold",
-        "country_code" : "GB",
-        "vcahospitals_url" : "https:\/\/vcahospitals.com\/know-your-pet\/cat-breeds\/scottish-fold",
-        "energy_level" : 3,
-        "hypoallergenic" : 0,
-        "rare" : 0,
-        "weight" : {
-          "metric" : "2 - 5",
-          "imperial" : "5 - 11"
-        },
-        "dog_friendly" : 5
-      }
-    ],
-    "width" : 1080
-  },
-  {
-    "height" : 1080,
-    "id" : "L5QYxsrYw",
-    "url" : "https:\/\/cdn2.thecatapi.com\/images\/L5QYxsrYw.jpg",
-    "breeds" : [
-      {
-        "temperament" : "Mischievous, Tenacious, Intelligent, Affectionate, Gentle, Interactive, Loyal",
-        "life_span" : "12 - 16",
-        "rex" : 0,
-        "id" : "soma",
-        "cfa_url" : "http:\/\/cfa.org\/Breeds\/BreedsSthruT\/Somali.aspx",
-        "vocalisation" : 1,
-        "natural" : 0,
-        "affection_level" : 5,
-        "experimental" : 0,
-        "shedding_level" : 4,
-        "country_codes" : "SO",
-        "indoor" : 0,
-        "description" : "The Somali lives life to the fullest. He climbs higher, jumps farther, plays harder. Nothing escapes the notice of this highly intelligent and inquisitive cat. Somalis love the company of humans and other animals.",
-        "child_friendly" : 3,
-        "health_issues" : 2,
-        "reference_image_id" : "EPF2ejNS0",
-        "intelligence" : 5,
-        "adaptability" : 5,
-        "stranger_friendly" : 5,
-        "name" : "Somali",
-        "alt_names" : "Fox Cat, Long-Haired Abyssinian",
-        "origin" : "Somalia",
-        "suppressed_tail" : 0,
-        "social_needs" : 5,
-        "grooming" : 3,
-        "short_legs" : 0,
-        "vetstreet_url" : "http:\/\/www.vetstreet.com\/cats\/somali",
-        "hairless" : 0,
-        "wikipedia_url" : "https:\/\/en.wikipedia.org\/wiki\/Somali_(cat)",
-        "country_code" : "SO",
-        "vcahospitals_url" : "https:\/\/vcahospitals.com\/know-your-pet\/cat-breeds\/somali",
-        "energy_level" : 5,
-        "hypoallergenic" : 0,
-        "rare" : 0,
-        "weight" : {
-          "metric" : "3 - 5",
-          "imperial" : "6 - 12"
-        },
-        "dog_friendly" : 4
-      }
-    ],
-    "width" : 1080
-  }
+        ],
+        "width" : 500
+    }
 ]
