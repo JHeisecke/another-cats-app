@@ -50,6 +50,7 @@ struct CatsFeedView: View {
             .scrollTargetLayout()
             .scrollTargetBehavior(.paging)
             .scrollBounceBehavior(.basedOnSize)
+            .scrollDisabled(true)
             .scrollPosition(id: $viewModel.scrollPosition, anchor: .center)
             .animation(.default, value: viewModel.scrollPosition)
             .onChange(of: viewModel.scrollPosition) { _, scrollPosition in
@@ -67,14 +68,14 @@ struct CatsFeedView: View {
     }
 }
 
-#Preview("Empty State") {
-    CatsFeedView(viewModel: CatsFeedViewModel(repository: MockCatsRepository()))
-}
-
 #Preview("Feed with Images") {
     let repository = MockCatsRepository()
     repository.result = .success(CatsListResponse.mocks)
     return CatsFeedView(viewModel: CatsFeedViewModel(repository: repository))
+}
+
+#Preview("Empty State") {
+    CatsFeedView(viewModel: CatsFeedViewModel(repository: MockCatsRepository()))
 }
 
 #Preview("Error") {

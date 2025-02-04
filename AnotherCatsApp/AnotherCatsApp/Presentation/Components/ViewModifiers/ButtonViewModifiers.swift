@@ -1,5 +1,5 @@
 //
-//  HighlightButtonStyle.swift
+//  ButtonViewModifiers.swift
 //  AnotherCatsApp
 //
 //  Created by Javier Heisecke on 2025-02-03.
@@ -13,6 +13,13 @@ struct PressableButtonStyle: ButtonStyle {
         configuration.label
             .scaleEffect(configuration.isPressed ? 0.9 : 1)
             .animation(.smooth, value: configuration.isPressed)
+    }
+}
+
+struct PlainButtonStyle: ButtonStyle {
+
+    func makeBody(configuration: Configuration) -> some View {
+        configuration.label
     }
 }
 
@@ -38,6 +45,7 @@ extension View {
         } label: {
             self
         }
+        .buttonStyle(PlainButtonStyle())
     }
 
     private func pressableButton(action: @escaping () -> Void) -> some View {

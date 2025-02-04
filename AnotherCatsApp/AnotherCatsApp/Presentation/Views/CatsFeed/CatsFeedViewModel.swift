@@ -61,10 +61,10 @@ class CatsFeedViewModel {
                 }
                 return
             }
-            viewState = .data
-            if cats.isEmpty {
+            if viewState == .firstLoad {
                 scrollPosition = response.first?.id
             }
+            viewState = .data
             cats.append(contentsOf: response)
             page += 1
         } catch {
