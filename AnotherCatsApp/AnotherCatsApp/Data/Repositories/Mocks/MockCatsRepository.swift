@@ -6,16 +6,18 @@
 //
 
 import Foundation
+import Combine
 
 class MockCatsRepository: CatsRepositoryProtocol {
 
-    var hasError = false
+    var result: Result<CatsListResponse, CatsError>? = .success([])
 
     func getCats(limit: Int, page: Int) async throws -> CatsList {
-        if hasError {
+        switch result {
+        case .success(let response):
+            return response.toDomain()
+        default:
             throw CatsError.networkError
-        } else {
-            return CatsListResponse.mocks.toDomain()
         }
     }
 }

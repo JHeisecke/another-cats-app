@@ -6,6 +6,7 @@
 //
 
 import Testing
+import Combine
 
 @testable import AnotherCatsApp
 
@@ -25,19 +26,27 @@ class CatsFeedViewModelTests {
     }
 
     @Test func testGetCatsFeed_Success() async throws {
+        repository.result = .success(CatsListResponse.mocks)
         await viewModel.getCatsFeed()
         #expect(viewModel.cats.count == 10 && viewModel.viewState == .data)
     }
 
+    @Test func testGetCatsFeed_SuccessEmpty() async throws {
+        repository.result = .success([])
+        await viewModel.getCatsFeed()
+        #expect(viewModel.viewState == .empty)
+    }
+
     @Test func testGetCatsFeed_Failure() async throws {
-        repository.hasError = true
+        repository.result = .failure(CatsError.networkError)
         await viewModel.getCatsFeed()
         #expect(viewModel.showAlert != nil && viewModel.viewState == .empty)
     }
 
     @Test func testGetCatsFeed_FailureOnSecondtry() async throws {
+        repository.result = .success(CatsListResponse.mocks)
         await viewModel.getCatsFeed()
-        repository.hasError = true
+        repository.result = .failure(CatsError.networkError)
         await viewModel.getCatsFeed()
         #expect(viewModel.showAlert != nil && viewModel.viewState == .data)
     }

@@ -48,7 +48,7 @@ class CatsFeedViewModel {
                 if cats.isEmpty {
                     viewState = .empty
                 } else {
-                    showAlert = CustomAlert(title: "No more cats!", subtitle: "All cats have come out!")
+                    showAlert = CustomAlert(title: "No more cats!", subtitle: "All the cats have come out!")
                 }
                 return
             }
