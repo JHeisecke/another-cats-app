@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import os
 
 enum APIError: Error {
     case genericError
@@ -16,6 +17,8 @@ protocol APIClientProtocol {
 }
 
 final class APIClient: NSObject, APIClientProtocol {
+
+    private lazy var logger: Logger = .init()
 
     func performRequest<T: Decodable>(endpoint: Endpoint, decoder: JSONDecoder) async throws -> T {
 
@@ -44,6 +47,8 @@ final class APIClient: NSObject, APIClientProtocol {
             URLCache.shared.storeCachedResponse(cachedResponse, for: urlRequest)
 
             let decodedData = try decoder.decode(T.self, from: data)
+
+            logger.debug("\(response.url?.absoluteString ?? ""): \(data.prettyPrintedJSONString ?? "")")
 
             return decodedData
         } catch {

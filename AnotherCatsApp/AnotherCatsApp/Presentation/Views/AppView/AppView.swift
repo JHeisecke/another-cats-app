@@ -9,14 +9,8 @@ import SwiftUI
 
 struct AppView: View {
 
-    @State private var hasData: Bool = true
-
     var body: some View {
-        if hasData {
-            MainView()
-        } else {
-            NoCatsView()
-        }
+        CatsFeedView(viewModel: CatsFeedViewModel(repository: CatsRepository(apiClient: APIClient())))
     }
 }
 

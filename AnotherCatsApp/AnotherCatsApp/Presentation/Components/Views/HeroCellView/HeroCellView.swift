@@ -9,17 +9,21 @@ import SwiftUI
 
 struct HeroCellView: View {
 
-    var title: String? = "This is some title"
-    var subtitle: String? = "This is some subtitle"
-    var imageName: String? = Constants.randomImage
+    var title: String?
+    var subtitle: String?
+    var imageName: String?
 
     var body: some View {
         ZStack {
-            if let imageName {
+            if let imageName, !imageName.isEmpty {
                 ImageLoaderView(urlString: imageName)
             } else {
                 Rectangle()
-                    .fill(.accent)
+                    .fill(.accent.opacity(0.4))
+                    .overlay {
+                        ProgressView()
+                            .frame(width: 100, height: 100)
+                    }
             }
         }
         .overlay(alignment: .bottomTrailing) {
@@ -44,13 +48,13 @@ struct HeroCellView: View {
 #Preview {
     ScrollView {
         VStack {
-            HeroCellView(imageName: nil)
+            HeroCellView(title: "This is some Title", subtitle: "This is some subtitle", imageName: nil)
                 .frame(width: 300, height: 200)
-            HeroCellView(title: nil)
+            HeroCellView(title: "A Title", subtitle: "a subtitle", imageName: "https://picsum.photos/600/600")
                 .frame(width: 300, height: 200)
-            HeroCellView(subtitle: nil)
+            HeroCellView(title: "This is some Title", subtitle: nil, imageName: nil)
                 .frame(width: 300, height: 200)
-            HeroCellView()
+            HeroCellView(title: nil, subtitle: "This is some subtitle", imageName: "https://picsum.photos/600/600")
                 .frame(width: 300, height: 400)
             HeroCellView()
                 .frame(width: 100, height: 200)

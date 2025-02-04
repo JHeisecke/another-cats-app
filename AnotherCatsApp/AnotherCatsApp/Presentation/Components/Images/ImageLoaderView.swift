@@ -29,6 +29,6 @@ struct ImageLoaderView: View {
 }
 
 #Preview {
-    ImageLoaderView(urlString: Constants.randomImage)
+    ImageLoaderView(urlString: "https://picsum.photos/600/600")
         .frame(width: 100, height: 200)
 }

@@ -9,12 +9,12 @@ import Foundation
 
 // MARK: - CatResponse
 
-struct CatModel {
+struct CatModel: Identifiable, Hashable {
     let id: String
-    let width, height: Int
     let imageUrl: String
     let breeds: String
     let personality: String
+    let description: String
 }
 
 typealias CatsList = [CatModel]

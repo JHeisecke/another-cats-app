@@ -13,7 +13,7 @@ enum CatsError: LocalizedError {
     var errorDescription: String? {
         switch self {
         case .networkError:
-            return "The cats can't come out right now.\n Try again later!"
+            return "There was a network error. Try again later."
         }
     }
 }

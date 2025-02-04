@@ -12,7 +12,7 @@ struct NoCatsView: View {
         VStack(spacing: 20) {
             Image(systemName: "cat")
                 .font(.largeTitle)
-            Text("No Cats in your feed, try again later!")
+            Text("The cats can't come out right now.\n Try again later!")
                 .multilineTextAlignment(.center)
                 .padding(.horizontal)
                 .font(.title)

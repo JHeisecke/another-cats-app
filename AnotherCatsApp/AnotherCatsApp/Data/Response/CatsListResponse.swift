@@ -19,13 +19,14 @@ struct CatResponse: Codable {
 
     struct Breed: Codable {
         let weight: Weight?
-        let id, name, temperament, origin: String?
+        let id, name, temperament, origin, description: String?
         let countryCodes, countryCode, lifeSpan: String?
         let wikipediaURL: String?
 
         enum CodingKeys: String, CodingKey {
             case weight, id, name, temperament, origin
             case countryCodes = "country_codes"
+            case description = "description"
             case countryCode = "country_code"
             case lifeSpan = "life_span"
             case wikipediaURL = "wikipedia_url"
@@ -46,24 +47,23 @@ typealias CatsListResponse = [CatResponse]
 
 extension CatsListResponse {
     func toDomain() -> CatsList {
-        self.compactMap { response in
+        var cats: CatsList = []
+        for response in self {
             guard let id = response.id,
-                  let width = response.width,
-                  let height = response.height,
-                  let url = response.url else { return nil }
+                  let url = response.url else { continue }
 
             let breeds = response.breeds?.compactMap { $0.name }.joined(separator: ", ") ?? ""
             let personality = response.breeds?.compactMap { $0.temperament }.joined(separator: ", ") ?? ""
 
-            return CatModel(
+            cats.append(CatModel(
                 id: id,
-                width: width,
-                height: height,
                 imageUrl: url,
                 breeds: breeds,
-                personality: personality
-            )
+                personality: personality,
+                description: response.breeds?.first?.description ?? ""
+            ))
         }
+        return cats
     }
 }
 
@@ -83,6 +83,7 @@ extension CatResponse {
                     name: "Abyssinian",
                     temperament: "Active, Energetic, Independent, Intelligent, Gentle",
                     origin: "Egypt",
+                    description: "The Somali lives life to the fullest. He climbs higher, jumps farther, plays harder. Nothing escapes the notice of this highly intelligent and inquisitive cat. Somalis love the company of humans and other animals.",
                     countryCodes: "EG",
                     countryCode: "EG",
                     lifeSpan: "14 - 15",
@@ -107,6 +108,7 @@ extension CatsListResponse {
                     name: "Abyssinian",
                     temperament: "Active, Energetic, Intelligent, Gentle",
                     origin: "Egypt",
+                    description: "The Somali lives life to the fullest. He climbs higher, jumps farther, plays harder. Nothing escapes the notice of this highly intelligent and inquisitive cat. Somalis love the company of humans and other animals.",
                     countryCodes: "EG",
                     countryCode: "EG",
                     lifeSpan: "14 - 15",
@@ -124,6 +126,7 @@ extension CatsListResponse {
                     name: "Bengal",
                     temperament: "Alert, Agile, Energetic, Demanding, Intelligent",
                     origin: "USA",
+                    description: "The Somali lives life to the fullest. He climbs higher, jumps farther, plays harder. Nothing escapes the notice of this highly intelligent and inquisitive cat. Somalis love the company of humans and other animals.",
                     countryCodes: "US",
                     countryCode: "US",
                     lifeSpan: "12 - 16",
@@ -141,6 +144,7 @@ extension CatsListResponse {
                     name: "Siberian",
                     temperament: "Curious, Intelligent, Loyal, Sweet, Agile",
                     origin: "Russia",
+                    description: "The Somali lives life to the fullest. He climbs higher, jumps farther, plays harder. Nothing escapes the notice of this highly intelligent and inquisitive cat. Somalis love the company of humans and other animals.",
                     countryCodes: "RU",
                     countryCode: "RU",
                     lifeSpan: "12 - 15",
@@ -158,6 +162,7 @@ extension CatsListResponse {
                     name: "Siamese",
                     temperament: "Affectionate, Intelligent, Social, Playful",
                     origin: "Thailand",
+                    description: "The Somali lives life to the fullest. He climbs higher, jumps farther, plays harder. Nothing escapes the notice of this highly intelligent and inquisitive cat. Somalis love the company of humans and other animals.",
                     countryCodes: "TH",
                     countryCode: "TH",
                     lifeSpan: "15 - 20",
@@ -175,6 +180,7 @@ extension CatsListResponse {
                     name: "Maine Coon",
                     temperament: "Gentle, Independent, Intelligent, Playful",
                     origin: "USA",
+                    description: "The Somali lives life to the fullest. He climbs higher, jumps farther, plays harder. Nothing escapes the notice of this highly intelligent and inquisitive cat. Somalis love the company of humans and other animals.",
                     countryCodes: "US",
                     countryCode: "US",
                     lifeSpan: "12 - 15",
@@ -192,6 +198,7 @@ extension CatsListResponse {
                     name: "Persian",
                     temperament: "Affectionate, Sweet, Quiet, Docile",
                     origin: "Iran",
+                    description: "The Somali lives life to the fullest. He climbs higher, jumps farther, plays harder. Nothing escapes the notice of this highly intelligent and inquisitive cat. Somalis love the company of humans and other animals.",
                     countryCodes: "IR",
                     countryCode: "IR",
                     lifeSpan: "14 - 17",
@@ -209,6 +216,7 @@ extension CatsListResponse {
                     name: "British Shorthair",
                     temperament: "Easygoing, Loyal, Affectionate, Social",
                     origin: "United Kingdom",
+                    description: "The Somali lives life to the fullest. He climbs higher, jumps farther, plays harder. Nothing escapes the notice of this highly intelligent and inquisitive cat. Somalis love the company of humans and other animals.",
                     countryCodes: "GB",
                     countryCode: "GB",
                     lifeSpan: "12 - 15",
@@ -226,6 +234,7 @@ extension CatsListResponse {
                     name: "Ragdoll",
                     temperament: "Affectionate, Friendly, Gentle, Social",
                     origin: "USA",
+                    description: "The Somali lives life to the fullest. He climbs higher, jumps farther, plays harder. Nothing escapes the notice of this highly intelligent and inquisitive cat. Somalis love the company of humans and other animals.",
                     countryCodes: "US",
                     countryCode: "US",
                     lifeSpan: "12 - 15",
@@ -243,6 +252,7 @@ extension CatsListResponse {
                     name: "Birman",
                     temperament: "Affectionate, Gentle, Friendly, Social",
                     origin: "France",
+                    description: "The Somali lives life to the fullest. He climbs higher, jumps farther, plays harder. Nothing escapes the notice of this highly intelligent and inquisitive cat. Somalis love the company of humans and other animals.",
                     countryCodes: "FR",
                     countryCode: "FR",
                     lifeSpan: "14 - 16",
@@ -260,6 +270,7 @@ extension CatsListResponse {
                     name: "Norwegian Forest Cat",
                     temperament: "Friendly, Intelligent, Social, Curious",
                     origin: "Norway",
+                    description: "The Somali lives life to the fullest. He climbs higher, jumps farther, plays harder. Nothing escapes the notice of this highly intelligent and inquisitive cat. Somalis love the company of humans and other animals.",
                     countryCodes: "NO",
                     countryCode: "NO",
                     lifeSpan: "14 - 16",

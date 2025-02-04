@@ -43,6 +43,7 @@ extension Endpoint {
         urlComponent.scheme = scheme
         urlComponent.path = path
         urlComponent.host = host
+        urlComponent.queryItems = queryParams
 
         guard let url = urlComponent.url else { return nil }
 
