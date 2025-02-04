@@ -14,10 +14,8 @@ struct InteractionsView: View {
     var body: some View {
         HStack {
             likeButton
-                .shadow(radius: 5)
             Spacer()
             dislikeButton
-                .shadow(radius: 5)
         }
         .padding()
     }
@@ -29,12 +27,21 @@ struct InteractionsView: View {
             .foregroundStyle(.white)
             .padding(.vertical, 30)
             .padding(.horizontal, 60)
-            .background {
-                Color.accent
-                    .clipShape(.capsule)
-            }
+            .background(
+                LinearGradient(
+                    colors: [
+                        Color.accent,
+                        Color.accent.opacity(0.8)
+                    ],
+                    startPoint: .bottomLeading,
+                    endPoint: .topTrailing
+                )
+                .clipShape(Capsule())
+            )
+            .shadow(color: Color.gray.opacity(0.4), radius: 8, x: 0, y: 5)
             .anyButton(.press) {
                 interactionPressed()
+                UIImpactFeedbackGenerator(style: .medium).impactOccurred()
             }
     }
 
@@ -42,13 +49,14 @@ struct InteractionsView: View {
         Image(systemName: "xmark")
             .font(.title)
             .bold()
-            .foregroundStyle(.white)
+            .foregroundStyle(.accent)
             .padding(.vertical, 30)
             .padding(.horizontal, 60)
             .background {
-                Color.accent
+                Color.white
                     .clipShape(.capsule)
             }
+            .shadow(color: Color.accent.opacity(0.4), radius: 8, x: 0, y: 5)
             .anyButton(.press) {
                 interactionPressed()
             }
@@ -57,5 +65,5 @@ struct InteractionsView: View {
 
 #Preview {
     InteractionsView(interactionPressed: { })
-    .background(.accent.opacity(0.2))
+        .background(.accent.opacity(0.2))
 }

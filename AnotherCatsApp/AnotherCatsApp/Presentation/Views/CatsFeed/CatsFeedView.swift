@@ -18,6 +18,7 @@ struct CatsFeedView: View {
                 switch viewModel.viewState {
                 case .firstLoad:
                     SkeletonHeroCellView()
+                        .ignoresSafeArea()
                 case .data:
                     scrollableCats()
                         .ignoresSafeArea()
