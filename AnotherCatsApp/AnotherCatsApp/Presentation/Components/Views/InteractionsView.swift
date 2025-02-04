@@ -14,8 +14,10 @@ struct InteractionsView: View {
     var body: some View {
         HStack {
             likeButton
+                .shadow(radius: 5)
             Spacer()
             dislikeButton
+                .shadow(radius: 5)
         }
         .padding()
     }
@@ -34,7 +36,6 @@ struct InteractionsView: View {
             .anyButton(.press) {
                 interactionPressed()
             }
-
     }
 
     var dislikeButton: some View {

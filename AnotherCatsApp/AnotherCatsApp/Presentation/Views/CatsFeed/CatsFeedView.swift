@@ -18,13 +18,12 @@ struct CatsFeedView: View {
                 SkeletonHeroCellView()
             case .data:
                 scrollableCats()
+                    .ignoresSafeArea()
                     .background(Color.accent.opacity(0.4))
             case .empty:
-                NoCatsView()
-                    .background(Color.accent.opacity(0.4))
+                NoCatsView(reload: viewModel.getCatsFeed)
             }
         }
-        .ignoresSafeArea()
         .showCustomAlert(alert: $viewModel.showAlert)
         .task {
             await viewModel.getCatsFeed()
@@ -41,6 +40,9 @@ struct CatsFeedView: View {
                             .frame(maxWidth: .infinity)
                             .containerRelativeFrame(.vertical, alignment: .center)
                             .id(cat.id)
+                            .anyButton {
+
+                            }
                     }
                 }
             }
@@ -65,6 +67,18 @@ struct CatsFeedView: View {
     }
 }
 
-#Preview {
+#Preview("Empty State") {
     CatsFeedView(viewModel: CatsFeedViewModel(repository: MockCatsRepository()))
+}
+
+#Preview("Feed with Images") {
+    let repository = MockCatsRepository()
+    repository.result = .success(CatsListResponse.mocks)
+    return CatsFeedView(viewModel: CatsFeedViewModel(repository: repository))
+}
+
+#Preview("Error") {
+    let repository = MockCatsRepository()
+    repository.result = .failure(CatsError.networkError)
+    return CatsFeedView(viewModel: CatsFeedViewModel(repository: repository))
 }

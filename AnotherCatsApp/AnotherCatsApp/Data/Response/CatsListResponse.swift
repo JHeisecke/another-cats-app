@@ -101,7 +101,7 @@ extension CatsListResponse {
                 id: "1",
                 width: 800,
                 height: 600,
-                url: "https://cdn2.thecatapi.com/images/mock1.jpg",
+                url: "https://cdn2.thecatapi.com/images/ctHlkAH3L.jpg",
                 breeds: [CatResponse.Breed(
                     weight: CatResponse.Weight(imperial: "7 - 10", metric: "3 - 5"),
                     id: "abys",
@@ -119,7 +119,7 @@ extension CatsListResponse {
                 id: "2",
                 width: 820,
                 height: 620,
-                url: "https://cdn2.thecatapi.com/images/mock2.jpg",
+                url: "https://cdn2.thecatapi.com/images/ctHlkAH3L.jpg",
                 breeds: [CatResponse.Breed(
                     weight: CatResponse.Weight(imperial: "8 - 12", metric: "4 - 6"),
                     id: "beng",
@@ -137,7 +137,7 @@ extension CatsListResponse {
                 id: "3",
                 width: 840,
                 height: 640,
-                url: "https://cdn2.thecatapi.com/images/mock3.jpg",
+                url: "https://cdn2.thecatapi.com/images/ctHlkAH3L.jpg",
                 breeds: [CatResponse.Breed(
                     weight: CatResponse.Weight(imperial: "9 - 11", metric: "4 - 5"),
                     id: "sibe",
@@ -155,7 +155,7 @@ extension CatsListResponse {
                 id: "4",
                 width: 860,
                 height: 660,
-                url: "https://cdn2.thecatapi.com/images/mock4.jpg",
+                url: "https://cdn2.thecatapi.com/images/ctHlkAH3L.jpg",
                 breeds: [CatResponse.Breed(
                     weight: CatResponse.Weight(imperial: "6 - 9", metric: "3 - 4"),
                     id: "siam",
@@ -173,7 +173,7 @@ extension CatsListResponse {
                 id: "5",
                 width: 880,
                 height: 680,
-                url: "https://cdn2.thecatapi.com/images/mock5.jpg",
+                url: "https://cdn2.thecatapi.com/images/ctHlkAH3L.jpg",
                 breeds: [CatResponse.Breed(
                     weight: CatResponse.Weight(imperial: "10 - 15", metric: "5 - 7"),
                     id: "maine",
@@ -191,7 +191,7 @@ extension CatsListResponse {
                 id: "6",
                 width: 900,
                 height: 700,
-                url: "https://cdn2.thecatapi.com/images/mock6.jpg",
+                url: "https://cdn2.thecatapi.com/images/ctHlkAH3L.jpg",
                 breeds: [CatResponse.Breed(
                     weight: CatResponse.Weight(imperial: "7 - 10", metric: "3 - 5"),
                     id: "pers",
@@ -209,7 +209,7 @@ extension CatsListResponse {
                 id: "7",
                 width: 920,
                 height: 720,
-                url: "https://cdn2.thecatapi.com/images/mock7.jpg",
+                url: "https://cdn2.thecatapi.com/images/ctHlkAH3L.jpg",
                 breeds: [CatResponse.Breed(
                     weight: CatResponse.Weight(imperial: "8 - 11", metric: "4 - 6"),
                     id: "brit",
@@ -227,7 +227,7 @@ extension CatsListResponse {
                 id: "8",
                 width: 940,
                 height: 740,
-                url: "https://cdn2.thecatapi.com/images/mock8.jpg",
+                url: "https://cdn2.thecatapi.com/images/ctHlkAH3L.jpg",
                 breeds: [CatResponse.Breed(
                     weight: CatResponse.Weight(imperial: "6 - 8", metric: "3 - 4"),
                     id: "ragd",
@@ -245,7 +245,7 @@ extension CatsListResponse {
                 id: "9",
                 width: 960,
                 height: 760,
-                url: "https://cdn2.thecatapi.com/images/mock9.jpg",
+                url: "https://cdn2.thecatapi.com/images/ctHlkAH3L.jpg",
                 breeds: [CatResponse.Breed(
                     weight: CatResponse.Weight(imperial: "7 - 9", metric: "3 - 5"),
                     id: "birm",
@@ -263,7 +263,7 @@ extension CatsListResponse {
                 id: "10",
                 width: 980,
                 height: 780,
-                url: "https://cdn2.thecatapi.com/images/mock10.jpg",
+                url: "https://cdn2.thecatapi.com/images/ctHlkAH3L.jpg",
                 breeds: [CatResponse.Breed(
                     weight: CatResponse.Weight(imperial: "8 - 12", metric: "4 - 6"),
                     id: "norw",
