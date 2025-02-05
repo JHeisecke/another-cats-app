@@ -20,7 +20,7 @@ struct InteractionsView: View {
         .padding()
     }
 
-    var likeButton: some View {
+    private var likeButton: some View {
         Image(systemName: "heart.fill")
             .font(.title)
             .bold()
@@ -46,7 +46,7 @@ struct InteractionsView: View {
             .accessibilityIdentifier(AccessibilityIdentifiers.likeButton)
     }
 
-    var dislikeButton: some View {
+    private var dislikeButton: some View {
         Image(systemName: "xmark")
             .font(.title)
             .bold()
