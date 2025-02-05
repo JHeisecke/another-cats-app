@@ -25,7 +25,7 @@ struct ImageLoaderView: View {
             }
             .clipped()
             .onDisappear {
-                SDImageCache.shared.removeImage(forKey: urlString, fromDisk: true)
+                SDImageCache.shared.removeImage(forKey: urlString, fromDisk: false)
             }
     }
 }
