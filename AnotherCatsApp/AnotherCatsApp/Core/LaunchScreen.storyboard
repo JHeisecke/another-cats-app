@@ -16,18 +16,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="🐱" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jh6-mN-arV">
-                                <rect key="frame" x="142.66666666666666" y="366.33333333333331" width="108" height="119.66666666666669"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="100"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AnotherCatsAppIcon" translatesAutoresizingMaskIntoConstraints="NO" id="5aN-ir-nPN">
+                                <rect key="frame" x="96.666666666666686" y="326" width="200" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="Lmg-aR-av9"/>
+                                    <constraint firstAttribute="width" constant="200" id="XCk-Cz-iXL"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Bcu-3y-fUS"/>
                         <color key="backgroundColor" name="AccentColor"/>
                         <constraints>
-                            <constraint firstItem="Jh6-mN-arV" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="LKW-iB-3DG"/>
-                            <constraint firstItem="Jh6-mN-arV" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="Vjf-CM-guD"/>
+                            <constraint firstItem="5aN-ir-nPN" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="G1F-LK-kYH"/>
+                            <constraint firstItem="5aN-ir-nPN" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="SCM-in-dd9"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -37,6 +38,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="AnotherCatsAppIcon" width="1024" height="1024"/>
         <namedColor name="AccentColor">
             <color red="1" green="0.3411764705882353" blue="0.3411764705882353" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

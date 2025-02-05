@@ -120,7 +120,6 @@ class CatsFeedViewModel {
 // MARK: - Testing Init
 
 extension CatsFeedViewModel {
-    #if DEBUG
     convenience init(repository: CatsRepositoryProtocol, page: Int, limit: Int) {
         self.init(debouncer: Debouncer(delay: 0), repository: repository)
         self.page = page
@@ -137,5 +136,4 @@ extension CatsFeedViewModel {
             self.limit = 0
         }
     }
-    #endif
 }
