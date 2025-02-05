@@ -23,22 +23,7 @@ struct CatDetailView: View {
                 )
                 .frame(maxWidth: .infinity)
                 .frame(height: 500)
-
-                VStack(alignment: .leading, spacing: 10) {
-                    Text(cat.description)
-                        .font(.body)
-                        .padding(.horizontal)
-
-                    infoRow(label: "Origin", value: cat.origin)
-                    infoRow(label: "Life Span", value: "\(cat.lifeSpan) years")
-
-                    ratingRow(label: "Energy Level", rating: cat.energyLevel)
-                    ratingRow(label: "Affection Level", rating: cat.affectionLevel)
-                    ratingRow(label: "Shedding Level", rating: cat.sheddingLevel)
-                }
-                .padding()
-                .padding(.bottom)
-
+                infoView
                 Spacer()
             }
         }
@@ -47,19 +32,40 @@ struct CatDetailView: View {
         .ignoresSafeArea()
         .background(Color.accent.opacity(0.1))
         .overlay(alignment: .topTrailing) {
-            Image(systemName: "xmark")
-                .foregroundStyle(.accent)
-                .bold()
-                .padding(10)
-                .background(.white, in: .circle)
-                .contentShape(.circle)
-                .shadow(radius: 1)
-                .anyButton(.press) {
-                    dismiss()
-                }
-                .padding()
-                .accessibilityIdentifier(AccessibilityIdentifiers.closeDetailButton)
+            closeButton
         }
+    }
+
+    private var closeButton: some View {
+        Image(systemName: "xmark")
+            .foregroundStyle(.accent)
+            .bold()
+            .padding(10)
+            .background(.white, in: .circle)
+            .contentShape(.circle)
+            .shadow(radius: 1)
+            .anyButton(.press) {
+                onDismissPressed()
+            }
+            .padding()
+            .accessibilityIdentifier(AccessibilityIdentifiers.closeDetailButton)
+    }
+
+    private var infoView: some View {
+        VStack(alignment: .leading, spacing: 10) {
+            Text(cat.description)
+                .font(.body)
+                .padding(.horizontal)
+
+            infoRow(label: "Origin", value: cat.origin)
+            infoRow(label: "Life Span", value: "\(cat.lifeSpan) years")
+
+            ratingRow(label: "Energy Level", rating: cat.energyLevel)
+            ratingRow(label: "Affection Level", rating: cat.affectionLevel)
+            ratingRow(label: "Shedding Level", rating: cat.sheddingLevel)
+        }
+        .padding()
+        .padding(.bottom)
     }
 
     private func infoRow(label: String, value: String) -> some View {
@@ -89,6 +95,13 @@ struct CatDetailView: View {
         }
         .padding(.horizontal)
     }
+
+    // MARK: - Actions
+
+    func onDismissPressed() {
+        dismiss()
+    }
+
 }
 
 #Preview {

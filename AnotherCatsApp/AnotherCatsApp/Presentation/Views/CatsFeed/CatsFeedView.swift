@@ -56,7 +56,7 @@ struct CatsFeedView: View {
                         .containerRelativeFrame(.vertical, alignment: .center)
                         .id(cat.id)
                         .anyButton {
-                            selectedCat = cat
+                            onCatPressed(cat)
                         }
                         .accessibilityIdentifier(AccessibilityIdentifiers.catImage(cat.id))
                     }
@@ -71,14 +71,26 @@ struct CatsFeedView: View {
             .scrollPosition(id: $viewModel.scrollPosition, anchor: .center)
             .animation(.default, value: viewModel.scrollPosition)
             InteractionsView {
-                if let scrollPosition = viewModel.scrollPosition {
-                    viewModel.interactWithCat(currentCatId: scrollPosition)
-                }
+                onInteractionsPressed()
             }
             .padding(.bottom)
         }
     }
+
+    // MARK: - Actions
+
+    private func onInteractionsPressed() {
+        if let scrollPosition = viewModel.scrollPosition {
+            viewModel.interactWithCat(currentCatId: scrollPosition)
+        }
+    }
+
+    private func onCatPressed(_ cat: CatModel) {
+        selectedCat = cat
+    }
 }
+
+// MARK: - Previews
 
 #Preview("Feed with Images") {
     let repository = CatsRepository(apiClient: MockAPIClient())

@@ -28,14 +28,21 @@ struct NoCatsView: View {
                 .foregroundStyle(.accent)
                 .padding()
                 .anyButton {
-                    Task {
-                        await reload()
-                    }
+                    onRefreshPressed()
                 }
         }
+    }
 
+    // MARK: - Actions
+
+    func onRefreshPressed() {
+        Task {
+            await reload()
+        }
     }
 }
+
+// MARK: - Preview
 
 #Preview {
     NoCatsView { }
