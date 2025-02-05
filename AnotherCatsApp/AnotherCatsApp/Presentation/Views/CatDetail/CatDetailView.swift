@@ -39,6 +39,7 @@ struct CatDetailView: View {
                 .scaleEffect(1.2)
                 .blur(radius: 80)
                 .ignoresSafeArea()
+                .background(Color.black.opacity(0.1))
         }
     }
 
@@ -49,7 +50,6 @@ struct CatDetailView: View {
             .padding(10)
             .background(.white, in: .circle)
             .contentShape(.circle)
-            .shadow(radius: 1)
             .anyButton(.press) {
                 onDismissPressed()
             }
@@ -72,7 +72,6 @@ struct CatDetailView: View {
             ratingRow(label: "Affection Level", rating: cat.affectionLevel)
             ratingRow(label: "Shedding Level", rating: cat.sheddingLevel)
         }
-        .shadow(radius: 1)
         .padding()
         .padding(.bottom)
     }
