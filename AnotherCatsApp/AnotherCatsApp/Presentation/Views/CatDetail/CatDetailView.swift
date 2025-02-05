@@ -10,9 +10,6 @@ import SwiftUI
 struct CatDetailView: View {
 
     @Environment(\.dismiss) private var dismiss
-    @State private var scaleFactor: CGFloat = 1
-    @State private var cornerRadius: CGFloat = 16
-    @State private var opacity: CGFloat = 1
 
     let cat: CatModel
 
@@ -29,36 +26,14 @@ struct CatDetailView: View {
                 infoView
                 Spacer()
             }
-            .scaleEffect(scaleFactor)
         }
         .scrollIndicators(.hidden)
         .toolbarVisibility(.hidden, for: .navigationBar)
         .ignoresSafeArea()
         .background(Color.accent.opacity(0.1))
-        .onScrollGeometryChange(for: CGFloat.self, of: { geometry in
-            geometry.contentOffset.y
-        }, action: { _, newValue in
-            if newValue >= 0 {
-                scaleFactor = 1
-                cornerRadius = 16
-                opacity = 1
-            } else {
-                scaleFactor = 1 - (0.1 * (newValue / -50))
-                cornerRadius = 55 - (35 / 50 * -newValue)
-                opacity = 1 - (abs(newValue) / 50)
-            }
-        })
-        .onScrollGeometryChange(for: Bool.self, of: { geometry in
-            geometry.contentOffset.y < -50
-        }, action: { _, isTornOff in
-            if isTornOff {
-                dismiss()
-            }
-        })
         .overlay(alignment: .topTrailing) {
             closeButton
         }
-        .opacity(opacity)
     }
 
     private var closeButton: some View {

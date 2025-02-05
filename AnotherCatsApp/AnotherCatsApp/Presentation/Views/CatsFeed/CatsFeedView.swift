@@ -9,7 +9,6 @@ import SwiftUI
 
 struct CatsFeedView: View {
 
-    @Namespace private var namespace
     @State private var selectedCat: CatModel?
     @State var viewModel: CatsFeedViewModel
 
@@ -33,7 +32,6 @@ struct CatsFeedView: View {
                     CatDetailView(
                         cat: selectedCat
                     )
-                    .navigationTransition(.zoom(sourceID: selectedCat.id, in: namespace))
                 }
             }
 
@@ -53,7 +51,6 @@ struct CatsFeedView: View {
                             subtitle: cat.personality,
                             imageName: cat.imageUrl
                         )
-                        .matchedTransitionSource(id: cat.id, in: namespace)
                         .frame(maxWidth: .infinity)
                         .containerRelativeFrame(.vertical, alignment: .center)
                         .id(cat.id)
