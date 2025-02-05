@@ -93,6 +93,7 @@ class CatsFeedViewModel {
                 if lockAPIRequests {
                     showAlert = CustomAlert(title: "No more cats!", subtitle: "All the cats have come out!\n Try again later!")
                     viewState = .empty
+                    cats = []
                 }
                 return
             }
