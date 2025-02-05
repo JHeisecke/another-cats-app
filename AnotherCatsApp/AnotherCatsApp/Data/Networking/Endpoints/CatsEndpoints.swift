@@ -8,7 +8,7 @@
 import Foundation
 
 enum CatsEndpoints {
-    case getCats(page: Int, limit: Int = 10)
+    case getCats(page: Int, limit: Int = 10, hasBreeds: Bool = true)
 }
 
 extension CatsEndpoints: Endpoint {
@@ -18,14 +18,14 @@ extension CatsEndpoints: Endpoint {
 
     var queryParams: [URLQueryItem]? {
         switch self {
-        case .getCats(let page, let limit):
-            [URLQueryItem(name: "limit", value: "\(limit)"), URLQueryItem(name: "page", value: "\(page)")]
+        case .getCats(let page, let limit, let hasBreeds):
+            [URLQueryItem(name: "limit", value: "\(limit)"), URLQueryItem(name: "page", value: "\(page)"), URLQueryItem(name: "has_breeds", value: "\(hasBreeds)")]
         }
     }
 
     var mockFile: String? {
         switch self {
-        case .getCats(let page, let limit):
+        case .getCats(let page, let limit, _):
             if limit == 0 {
                 return "cats-empty"
             }
