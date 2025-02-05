@@ -10,8 +10,6 @@ import SwiftUI
 @main
 struct AnotherCatsAppApp: App {
 
-    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
-
     var body: some Scene {
         WindowGroup {
             Group {
