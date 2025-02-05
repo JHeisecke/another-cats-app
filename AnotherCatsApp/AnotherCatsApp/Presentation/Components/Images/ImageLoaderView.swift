@@ -12,7 +12,6 @@ struct ImageLoaderView: View {
 
     var urlString: String
     var resizingMode = ContentMode.fill
-    var forceTransitionAnimation = false
 
     var body: some View {
         Rectangle()
@@ -20,11 +19,14 @@ struct ImageLoaderView: View {
             .overlay {
                 WebImage(url: URL(string: urlString))
                     .resizable()
-                    .indicator(.activity)
+                    .indicator(.activity(style: .circular))
                     .aspectRatio(contentMode: resizingMode)
                     .allowsHitTesting(false)
             }
             .clipped()
+            .onDisappear {
+                SDImageCache.shared.removeImage(forKey: urlString, fromDisk: true)
+            }
     }
 }
 
