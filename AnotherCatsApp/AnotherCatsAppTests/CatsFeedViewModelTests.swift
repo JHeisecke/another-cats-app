@@ -25,6 +25,8 @@ class CatsFeedViewModelTests {
         repository = nil
     }
 
+    // MARK: - Get Cats
+
     @Test func testGetCatsFeed_Success() async throws {
         viewModel = CatsFeedViewModel(repository: repository)
         await viewModel.getCatsFeed()
@@ -42,6 +44,8 @@ class CatsFeedViewModelTests {
         await viewModel.getCatsFeed()
         #expect(viewModel.showAlert != nil && viewModel.viewState == .empty)
     }
+
+    // MARK: - Interact With Cats
 
     @Test func testInteractWithCat_ScrollsToNextCat() async throws {
         viewModel = CatsFeedViewModel(repository: repository)

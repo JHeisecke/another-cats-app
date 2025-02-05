@@ -51,6 +51,8 @@ struct CatDetailView: View {
             .accessibilityIdentifier(AccessibilityIdentifiers.closeDetailButton)
     }
 
+    // MARK: - Info
+
     private var infoView: some View {
         VStack(alignment: .leading, spacing: 10) {
             Text(cat.description)
@@ -103,6 +105,8 @@ struct CatDetailView: View {
     }
 
 }
+
+// MARK: - Preview
 
 #Preview {
     CatDetailView(cat: CatModel.mock)

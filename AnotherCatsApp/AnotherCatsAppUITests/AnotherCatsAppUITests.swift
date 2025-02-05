@@ -17,6 +17,8 @@ final class AnotherCatsAppUITests: XCTestCase {
     override func tearDownWithError() throws {
     }
 
+    // MARK: - Feed Testing
+
     func testGeneralBehavior() throws {
         let app = XCUIApplication()
         app.launchArguments = ["UI_TESTING"]
@@ -35,6 +37,8 @@ final class AnotherCatsAppUITests: XCTestCase {
         closedetailbuttonButton.tap()
     }
 
+    // MARK: - Error State
+
     func testErrorView() throws {
         let app = XCUIApplication()
         app.launchArguments = ["UI_TESTING", "HAS_ERROR"]
@@ -44,6 +48,8 @@ final class AnotherCatsAppUITests: XCTestCase {
         app/*@START_MENU_TOKEN@*/.buttons["arrow.clockwise"]/*[[".buttons[\"Refresh\"]",".buttons[\"arrow.clockwise\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
         okButton.tap()
     }
+
+    // MARK: - Empty State
 
     func testEmptyView() throws {
         let app = XCUIApplication()
