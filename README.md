@@ -2,6 +2,16 @@
 
 Welcome to **AnotherCatApp**, a SwiftUI-based iOS app showcasing a vertical feed of cat images with interactive like and dislike buttons.
 
+<p align="center" width="100%">
+<img src="https://github.com/JHeisecke/another-cats-app/blob/main/Screenshots/screenshot_01.png" width="200"> <img src="https://github.com/JHeisecke/another-cats-app/blob/main/Screenshots/screenshot_02.png" width="200"> <img src="https://github.com/JHeisecke/another-cats-app/blob/main/Screenshots/screenshot_03.png" width="200">
+</p>
+
+## 📱 Features
+
+- **Vertical Feed**: Infinite scrolling list of cats with smooth paging.
+- **Detail View**: Detailed information about each cat, including breed info and description.
+- **Coming Soon**: Vote for cats
+
 ## 🚀 Getting Started
 
 Follow these steps to set up the project:
@@ -38,16 +48,14 @@ xcodebuild -resolvePackageDependencies
 ```
 
 ## 🛠 Project Structure
-**MVVM with Clean Architecture** (without UseCase to not add unnecessary complexity)
+**MVVM with Clean Architecture** (without Use Cases to avoid unnecessary complexity)
 - **Core**: Core functionalities and configurations.
 - **Data**: Contains the networking, responses and mapping login to Domain models.
 - **Domain**: Contains the Repositories Protocols and Models used in the app.
 - **Presentation**: Contains the Views, ViewModels and UIComponents.
 
-## 📱 Features
-
-- **Vertical Feed**: Infinite scrolling list of cats with smooth paging.
-- **Detail View**: Detailed information about each cat, including breed info and description.
+## 📦 Dependencies
+- **SDWebImageSwiftUI**: Used for asynchronous image loading and caching.
 
 ## 🧪 Running Tests
 
