@@ -63,6 +63,7 @@ Run the test suite using Xcode:
 
 - **Menu**: Product > Test
 - **Shortcut**: `Cmd + U`
+- **Command Line**: xcodebuild test -scheme AnotherCatsApp
 
 ## 🐞 Troubleshooting
 
