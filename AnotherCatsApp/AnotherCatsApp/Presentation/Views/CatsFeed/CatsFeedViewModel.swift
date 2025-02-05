@@ -26,6 +26,7 @@ class CatsFeedViewModel {
     // MARK: - Properties
 
     private let debouncer: Debouncer
+    private let imageManager: ImageManager
     private let repository: CatsRepositoryProtocol
     private var isLoading = false
 
@@ -40,10 +41,11 @@ class CatsFeedViewModel {
 
     // MARK: - Initialization
 
-    required init(debouncer: Debouncer = Debouncer(delay: 0.2), repository: CatsRepositoryProtocol) {
+    required init(debouncer: Debouncer = Debouncer(delay: 0.2), imageManager: ImageManager = ImageManager(), repository: CatsRepositoryProtocol) {
         self.repository = repository
         self.viewState = .firstLoad
         self.debouncer = debouncer
+        self.imageManager = imageManager
     }
 
     deinit {
@@ -62,23 +64,28 @@ class CatsFeedViewModel {
         }
 
         do {
-            let response = try await repository.getCats(limit: limit, page: page)
-            guard !response.isEmpty else {
+            let newCats = try await repository.getCats(limit: limit, page: page)
+            guard !newCats.isEmpty else {
                 if cats.isEmpty {
                     viewState = .empty
+                    imageManager.stopPrefetching()
                 }
                 lockAPIRequests = true
                 return
             }
+            Task(priority: .background) {
+                imageManager.startPrefetching(urls: newCats.compactMap { URL(string: $0.imageUrl) })
+            }
             if viewState != .data {
-                scrollPosition = response.first?.id
+                scrollPosition = newCats.first?.id
                 viewState = .data
             }
-            cats.append(contentsOf: response)
+            cats.append(contentsOf: newCats)
             page += 1
             lockAPIRequests = false
         } catch {
             if cats.isEmpty {
+                imageManager.stopPrefetching()
                 showAlert = CustomAlert(error: error)
                 viewState = .empty
             }
@@ -96,6 +103,10 @@ class CatsFeedViewModel {
                 return
             }
             scrollPosition = cats[firstIndex + 1].id
+
+            Task(priority: .background) {
+                self.imageManager.removeImage(urlString: self.cats[firstIndex].imageUrl)
+            }
 
             Task {
                 if firstIndex >= self.cats.count - 5 {
