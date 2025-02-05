@@ -34,11 +34,17 @@ struct CatDetailView: View {
         .overlay(alignment: .topTrailing) {
             closeButton
         }
+        .background {
+            ImageLoaderView(urlString: cat.imageUrl, resizingMode: .fill)
+                .scaleEffect(1.2)
+                .blur(radius: 80)
+                .ignoresSafeArea()
+        }
     }
 
     private var closeButton: some View {
         Image(systemName: "xmark")
-            .foregroundStyle(.accent)
+            .foregroundStyle(.accent.opacity(0.4))
             .bold()
             .padding(10)
             .background(.white, in: .circle)
@@ -66,6 +72,7 @@ struct CatDetailView: View {
             ratingRow(label: "Affection Level", rating: cat.affectionLevel)
             ratingRow(label: "Shedding Level", rating: cat.sheddingLevel)
         }
+        .shadow(radius: 1)
         .padding()
         .padding(.bottom)
     }

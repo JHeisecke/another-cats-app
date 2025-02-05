@@ -8,11 +8,6 @@
 import SwiftUI
 
 extension View {
-
-    func tappableBackground() -> some View {
-        background(.black.opacity(0.001))
-    }
-
     func addingGradientBackgroundForText() -> some View {
         self
             .background(

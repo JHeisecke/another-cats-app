@@ -63,13 +63,11 @@ extension View {
         Text("Hello, World!")
             .padding()
             .frame(maxWidth: .infinity)
-            .tappableBackground()
             .anyButton(.plain, action: {})
 
         Text("Hello, World!")
             .padding()
             .frame(maxWidth: .infinity)
-            .tappableBackground()
             .anyButton(.press, action: {})
     }
 }
