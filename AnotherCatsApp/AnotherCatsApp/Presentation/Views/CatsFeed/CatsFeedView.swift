@@ -26,6 +26,7 @@ struct CatsFeedView: View {
                     emptyView
                 }
             }
+            .animation(.snappy, value: viewModel.viewState)
             .showCustomAlert(alert: $viewModel.showAlert)
             .navigationDestination(isPresented: Binding(ifNotNil: $selectedCat)) {
                 if let selectedCat {

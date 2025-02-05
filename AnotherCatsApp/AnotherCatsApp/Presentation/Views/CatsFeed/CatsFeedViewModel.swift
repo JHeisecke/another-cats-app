@@ -40,7 +40,7 @@ class CatsFeedViewModel {
 
     // MARK: - Initialization
 
-    required init(debouncer: Debouncer = Debouncer(delay: 0.3), repository: CatsRepositoryProtocol) {
+    required init(debouncer: Debouncer = Debouncer(delay: 0.2), repository: CatsRepositoryProtocol) {
         self.repository = repository
         self.viewState = .firstLoad
         self.debouncer = debouncer
@@ -70,7 +70,7 @@ class CatsFeedViewModel {
                 lockAPIRequests = true
                 return
             }
-            if viewState == .firstLoad {
+            if viewState != .data {
                 scrollPosition = response.first?.id
                 viewState = .data
             }
@@ -90,11 +90,9 @@ class CatsFeedViewModel {
         debouncer.call { [weak self] in
             guard let self else { return }
             guard let firstIndex = cats.firstIndex(where: { $0.id == currentCatId }), firstIndex < cats.count - 1 else {
-                if lockAPIRequests {
-                    showAlert = CustomAlert(title: "No more cats!", subtitle: "All the cats have come out!\n Try again later!")
-                    viewState = .empty
-                    cats = []
-                }
+                showAlert = CustomAlert(title: "No more cats!", subtitle: "All the cats have come out!\n Try again later!")
+                viewState = .empty
+                cats = []
                 return
             }
             scrollPosition = cats[firstIndex + 1].id
