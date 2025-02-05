@@ -9,7 +9,7 @@ import SwiftUI
 
 struct NoCatsView: View {
 
-    var reload: () async -> Void
+    var reload: (Bool) async -> Void
 
     var body: some View {
         VStack(spacing: 20) {
@@ -26,7 +26,7 @@ struct NoCatsView: View {
                 .font(.largeTitle)
                 .foregroundStyle(.accent)
                 .padding()
-                .anyButton {
+                .anyButton(.press) {
                     onRefreshPressed()
                 }
         }
@@ -36,7 +36,7 @@ struct NoCatsView: View {
 
     func onRefreshPressed() {
         Task {
-            await reload()
+            await reload(true)
         }
     }
 }
@@ -44,5 +44,5 @@ struct NoCatsView: View {
 // MARK: - Preview
 
 #Preview {
-    NoCatsView { }
+    NoCatsView { _ in }
 }

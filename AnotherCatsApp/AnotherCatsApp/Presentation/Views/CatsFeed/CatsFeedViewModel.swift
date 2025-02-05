@@ -29,6 +29,7 @@ class CatsFeedViewModel {
     private let repository: CatsRepositoryProtocol
     private var isLoading = false
 
+    private var lockAPIRequests: Bool = false
     private var limit: Int = Constants.numberOfCatsPerPage
     private(set) var page = 0
     private(set) var viewState: ViewState
@@ -51,7 +52,8 @@ class CatsFeedViewModel {
 
     // MARK: - Actions
 
-    func getCatsFeed() async {
+    func getCatsFeed(forceReload: Bool = false) async {
+        guard !lockAPIRequests || forceReload else { return }
         guard !isLoading else { return }
         isLoading = true
 
@@ -64,9 +66,8 @@ class CatsFeedViewModel {
             guard !response.isEmpty else {
                 if cats.isEmpty {
                     viewState = .empty
-                } else {
-                    showAlert = CustomAlert(title: "No more cats!", subtitle: "All the cats have come out!")
                 }
+                lockAPIRequests = true
                 return
             }
             if viewState == .firstLoad {
@@ -75,20 +76,26 @@ class CatsFeedViewModel {
             }
             cats.append(contentsOf: response)
             page += 1
+            lockAPIRequests = false
         } catch {
             if cats.isEmpty {
                 showAlert = CustomAlert(error: error)
                 viewState = .empty
-            } else {
-                showAlert = CustomAlert(title: "No more cats!", subtitle: "All cats have come out!\n Try again later!")
             }
+            lockAPIRequests = true
         }
     }
 
     func interactWithCat(currentCatId: String) {
         debouncer.call { [weak self] in
             guard let self else { return }
-            guard let firstIndex = cats.firstIndex(where: { $0.id == currentCatId }), firstIndex < cats.count else { return }
+            guard let firstIndex = cats.firstIndex(where: { $0.id == currentCatId }), firstIndex < cats.count - 1 else {
+                if lockAPIRequests {
+                    showAlert = CustomAlert(title: "No more cats!", subtitle: "All the cats have come out!\n Try again later!")
+                    viewState = .empty
+                }
+                return
+            }
             scrollPosition = cats[firstIndex + 1].id
 
             Task {
