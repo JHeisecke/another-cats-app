@@ -43,13 +43,6 @@ class CatsFeedViewModelTests {
         #expect(viewModel.showAlert != nil && viewModel.viewState == .empty)
     }
 
-    @Test func testGetCatsFeed_FailureOnSecondTry() async throws {
-        viewModel = CatsFeedViewModel(repository: repository, page: 1, limit: 10)
-        await viewModel.getCatsFeed()
-        await viewModel.getCatsFeed()
-        #expect(viewModel.showAlert != nil && viewModel.viewState == .data)
-    }
-
     @Test func testInteractWithCat_ScrollsToNextCat() async throws {
         viewModel = CatsFeedViewModel(repository: repository)
         await viewModel.getCatsFeed()
@@ -76,5 +69,23 @@ class CatsFeedViewModelTests {
         try await Task.sleep(for: .seconds(3))
 
         #expect(viewModel.cats.count == 20)
+    }
+
+    @Test func testInteractWithCat_FailureNoMoreCats() async throws {
+        viewModel = CatsFeedViewModel(repository: repository, page: 1, limit: 10)
+        await viewModel.getCatsFeed()
+
+        let secondToLastCatId = viewModel.cats[viewModel.cats.count - 2].id
+        let lastCatId = viewModel.cats.last!.id
+
+        viewModel.interactWithCat(currentCatId: secondToLastCatId)
+        try await Task.sleep(for: .seconds(3))
+
+        viewModel.interactWithCat(currentCatId: lastCatId)
+        try await Task.sleep(for: .seconds(0.5))
+
+        #expect(viewModel.cats.isEmpty)
+        #expect(viewModel.viewState == .empty)
+        #expect(viewModel.showAlert != nil)
     }
 }
