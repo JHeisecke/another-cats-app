@@ -9,20 +9,20 @@ import SwiftUI
 
 struct CatsFeedView: View {
 
+    @Namespace private var namespace
     @State private var selectedCat: CatModel?
     @State var viewModel: CatsFeedViewModel
 
     var body: some View {
         NavigationStack {
-            VStack {
+            ZStack {
+                Color.accent.opacity(0.4)
+                    .ignoresSafeArea()
                 switch viewModel.viewState {
                 case .firstLoad:
                     SkeletonHeroCellView()
-                        .ignoresSafeArea()
                 case .data:
                     scrollableCats()
-                        .ignoresSafeArea()
-                        .background(Color.accent.opacity(0.4))
                 case .empty:
                     NoCatsView(reload: viewModel.getCatsFeed)
                 }
@@ -33,6 +33,7 @@ struct CatsFeedView: View {
                     CatDetailView(
                         cat: selectedCat
                     )
+                    .navigationTransition(.zoom(sourceID: selectedCat.id, in: namespace))
                 }
             }
 
@@ -52,6 +53,7 @@ struct CatsFeedView: View {
                             subtitle: cat.personality,
                             imageName: cat.imageUrl
                         )
+                        .matchedTransitionSource(id: cat.id, in: namespace)
                         .frame(maxWidth: .infinity)
                         .containerRelativeFrame(.vertical, alignment: .center)
                         .id(cat.id)

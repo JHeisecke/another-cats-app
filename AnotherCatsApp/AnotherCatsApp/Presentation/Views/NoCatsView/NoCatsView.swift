@@ -21,7 +21,6 @@ struct NoCatsView: View {
                 .font(.title)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(Color.accent.opacity(0.4))
         .overlay(alignment: .topTrailing) {
             Image(systemName: "arrow.clockwise")
                 .font(.largeTitle)
