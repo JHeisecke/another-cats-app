@@ -97,9 +97,11 @@ class CatsFeedViewModel {
         debouncer.call { [weak self] in
             guard let self else { return }
             guard let firstIndex = cats.firstIndex(where: { $0.id == currentCatId }), firstIndex < cats.count - 1 else {
-                showAlert = CustomAlert(title: "No more cats!", subtitle: "All the cats have come out!\n Try again later!")
-                viewState = .empty
-                cats = []
+                if lockAPIRequests {
+                    showAlert = CustomAlert(title: "No more cats!", subtitle: "All the cats have come out!\n Try again later!")
+                    viewState = .empty
+                    cats = []
+                }
                 return
             }
             scrollPosition = cats[firstIndex + 1].id
