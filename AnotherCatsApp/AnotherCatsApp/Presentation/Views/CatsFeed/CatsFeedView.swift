@@ -113,6 +113,7 @@ struct CatsFeedView: View {
                 .anyButton(.press) {
                     onRefreshPressed()
                 }
+                .accessibilityIdentifier(AccessibilityIdentifiers.reloadButton)
         }
     }
 
