@@ -118,24 +118,3 @@ class CatsFeedViewModel {
         }
     }
 }
-
-// MARK: - Testing Init
-
-extension CatsFeedViewModel {
-    convenience init(repository: CatsRepositoryProtocol, page: Int, limit: Int) {
-        self.init(debouncer: Debouncer(delay: 0), repository: repository)
-        self.page = page
-        self.limit = limit
-    }
-
-    convenience init(repository: CatsRepositoryProtocol, isUITesting: Bool) {
-        self.init(debouncer: Debouncer(delay: 0), repository: repository)
-        if Utilities.hasError {
-            self.page = 2
-            self.limit = 10
-        } else if Utilities.isEmptyFeed {
-            self.page = 0
-            self.limit = 0
-        }
-    }
-}

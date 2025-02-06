@@ -25,8 +25,7 @@ final class AnotherCatsAppUITests: XCTestCase {
         app.launch()
         let elementsQuery = app.scrollViews.otherElements
         elementsQuery/*@START_MENU_TOKEN@*/.buttons["catImage_fhYh2PDcC"]/*[[".buttons[\"Manx, Easy Going, Intelligent, Loyal, Playful, Social\"]",".buttons[\"catImage_fhYh2PDcC\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
-        elementsQuery/*@START_MENU_TOKEN@*/.children(matching: .image).matching(identifier: "star.fill").element(boundBy: 12)/*[[".children(matching: .image).matching(identifier: \"Favorite\").element(boundBy: 12)",".children(matching: .image).matching(identifier: \"star.fill\").element(boundBy: 12)"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
-        elementsQuery/*@START_MENU_TOKEN@*/.children(matching: .image).matching(identifier: "star.fill").element(boundBy: 4)/*[[".children(matching: .image).matching(identifier: \"Favorite\").element(boundBy: 4)",".children(matching: .image).matching(identifier: \"star.fill\").element(boundBy: 4)"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.swipeUp()
+
         let closedetailbuttonButton = app/*@START_MENU_TOKEN@*/.buttons["closeDetailButton"]/*[[".buttons[\"Close\"]",".buttons[\"closeDetailButton\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
         closedetailbuttonButton.tap()
         let likebuttonButton = app/*@START_MENU_TOKEN@*/.buttons["likeButton"]/*[[".buttons[\"Love\"]",".buttons[\"likeButton\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/

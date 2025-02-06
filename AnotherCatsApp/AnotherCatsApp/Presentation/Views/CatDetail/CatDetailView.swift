@@ -39,7 +39,7 @@ struct CatDetailView: View {
                 .scaleEffect(1.2)
                 .blur(radius: 80)
                 .ignoresSafeArea()
-                .background(Color.black.opacity(0.1))
+                .background(Color.black.opacity(0.3))
         }
     }
 
@@ -80,7 +80,7 @@ struct CatDetailView: View {
         HStack {
             Text(label)
                 .font(.headline)
-                .foregroundColor(.gray)
+                .foregroundColor(.primary)
             Spacer()
             Text(value)
                 .font(.body)
@@ -92,7 +92,7 @@ struct CatDetailView: View {
         HStack {
             Text(label)
                 .font(.headline)
-                .foregroundColor(.gray)
+                .foregroundColor(.primary)
             Spacer()
             HStack(spacing: 5) {
                 ForEach(0..<5) { index in

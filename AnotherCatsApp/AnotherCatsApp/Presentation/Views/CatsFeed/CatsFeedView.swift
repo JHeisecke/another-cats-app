@@ -138,15 +138,15 @@ struct CatsFeedView: View {
 
 #Preview("Feed with Images") {
     let repository = CatsRepository(apiClient: MockAPIClient())
-    return CatsFeedView(viewModel: CatsFeedViewModel(repository: repository))
+    CatsFeedView(viewModel: CatsFeedViewModel(repository: repository))
 }
 
 #Preview("Empty State") {
-    let repository = CatsRepository(apiClient: MockAPIClient())
-    CatsFeedView(viewModel: CatsFeedViewModel(repository: repository, page: 2, limit: 0))
+    let repository = CatsRepository(apiClient: MockAPIClient(isEmpty: true))
+    CatsFeedView(viewModel: CatsFeedViewModel(repository: repository))
 }
 
 #Preview("Error") {
-    let repository = CatsRepository(apiClient: MockAPIClient())
-    CatsFeedView(viewModel: CatsFeedViewModel(repository: repository, page: 2, limit: 10))
+    let repository = CatsRepository(apiClient: MockAPIClient(hasError: true))
+    CatsFeedView(viewModel: CatsFeedViewModel(repository: repository))
 }

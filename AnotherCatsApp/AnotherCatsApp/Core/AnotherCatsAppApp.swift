@@ -10,28 +10,19 @@ import SwiftUI
 @main
 struct AnotherCatsAppApp: App {
 
+    var apiClient: APIClientProtocol {
+        Utilities.isUITesting ? MockAPIClient(hasError: Utilities.hasError, isEmpty: Utilities.isEmptyFeed) : APIClient()
+    }
+
     var body: some Scene {
         WindowGroup {
-            Group {
-                if Utilities.isUITesting {
-                    AppView(
-                        catFeedViewModel: CatsFeedViewModel(
-                            repository: CatsRepository(
-                                apiClient: MockAPIClient()
-                            ),
-                            isUITesting: true
-                        )
+            AppView(
+                catFeedViewModel: CatsFeedViewModel(
+                    repository: CatsRepository(
+                        apiClient: apiClient
                     )
-                } else {
-                    AppView(
-                        catFeedViewModel: CatsFeedViewModel(
-                            repository: CatsRepository(
-                                apiClient: APIClient()
-                            )
-                        )
-                    )
-                }
-            }
+                )
+            )
         }
     }
 }
