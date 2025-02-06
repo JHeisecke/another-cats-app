@@ -49,6 +49,11 @@ struct CatDetailView: View {
             .bold()
             .padding(10)
             .background(.white, in: .circle)
+            .background(
+                Circle()
+                    .fill(Color.white)
+                    .overlay(Circle().stroke(Color.black.opacity(0.2), lineWidth: 0.5))
+            )
             .contentShape(.circle)
             .anyButton(.press) {
                 onDismissPressed()
