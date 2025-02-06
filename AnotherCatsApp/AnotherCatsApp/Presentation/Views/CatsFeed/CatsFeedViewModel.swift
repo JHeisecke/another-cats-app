@@ -21,6 +21,7 @@ class CatsFeedViewModel {
 
     struct Constants {
         static let numberOfCatsPerPage = 10
+        static let maxBufferSize = 50
     }
 
     // MARK: - Properties
@@ -38,6 +39,10 @@ class CatsFeedViewModel {
 
     var scrollPosition: String?
     var showAlert: CustomAlert?
+
+    private var isOnLastPage: Bool {
+        Constants.maxBufferSize - cats.count < 9
+    }
 
     // MARK: - Initialization
 
@@ -99,27 +104,36 @@ class CatsFeedViewModel {
     func interactWithCat(currentCatId: String) {
         debouncer.call { [weak self] in
             guard let self else { return }
-            guard let firstIndex = cats.firstIndex(where: { $0.id == currentCatId }), firstIndex < cats.count - 1 else {
-                print("No more cats?")
-                if lockAPIRequests {
-                    showAlert = CustomAlert(title: "No more cats!", subtitle: "All the cats have come out!\n Try again later!")
-                    viewState = .empty
-                    cats = []
-                }
+
+            guard let firstIndex = cats.firstIndex(where: { $0.id == currentCatId }) else { return }
+
+            let isLastCat = firstIndex >= cats.count - 1
+            guard !isLastCat else {
+                lastCatAction()
                 return
             }
-            scrollPosition = cats[firstIndex + 1].id
-            print("cats: \(cats.count - 1)")
-            print("scrollPosition: \(firstIndex+1) + \(scrollPosition ?? "0")")
-            Task(priority: .background) {
-                self.imageManager.removeImage(urlString: self.cats[firstIndex].imageUrl)
-            }
 
-            Task {
-                if firstIndex >= self.cats.count - 5 {
-                    await self.getCatsFeed()
-                }
+            scrollPosition = cats[firstIndex + 1].id
+            imageManager.removeImage(urlString: cats[firstIndex].imageUrl)
+
+            if !isOnLastPage, firstIndex >= cats.count - 5 {
+                Task { await self.getCatsFeed() }
             }
+        }
+    }
+
+    private func lastCatAction() {
+        if isOnLastPage {
+            Task {
+                viewState = .firstLoad
+                cats = []
+                try? await Task.sleep(for: .seconds(1))
+                await getCatsFeed()
+            }
+        } else if lockAPIRequests {
+            showAlert = CustomAlert(title: "No more cats!", subtitle: "All the cats have come out!\nTry again later!")
+            viewState = .empty
+            cats = []
         }
     }
 
