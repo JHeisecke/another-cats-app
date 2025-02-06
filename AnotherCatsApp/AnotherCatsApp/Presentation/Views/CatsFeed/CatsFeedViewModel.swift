@@ -66,6 +66,7 @@ class CatsFeedViewModel {
         do {
             let newCats = try await repository.getCats(limit: limit, page: page)
             guard !newCats.isEmpty else {
+                print("Success empty call")
                 if cats.isEmpty {
                     viewState = .empty
                     imageManager.stopPrefetching()
@@ -80,10 +81,12 @@ class CatsFeedViewModel {
                 scrollPosition = newCats.first?.id
                 viewState = .data
             }
-            cats.append(contentsOf: newCats)
+            appendUniqueCats(newCats)
             page += 1
+            print("Success call")
             lockAPIRequests = false
         } catch {
+            print("error call")
             if cats.isEmpty {
                 imageManager.stopPrefetching()
                 showAlert = CustomAlert(error: error)
@@ -97,6 +100,7 @@ class CatsFeedViewModel {
         debouncer.call { [weak self] in
             guard let self else { return }
             guard let firstIndex = cats.firstIndex(where: { $0.id == currentCatId }), firstIndex < cats.count - 1 else {
+                print("No more cats?")
                 if lockAPIRequests {
                     showAlert = CustomAlert(title: "No more cats!", subtitle: "All the cats have come out!\n Try again later!")
                     viewState = .empty
@@ -105,7 +109,8 @@ class CatsFeedViewModel {
                 return
             }
             scrollPosition = cats[firstIndex + 1].id
-
+            print("cats: \(cats.count - 1)")
+            print("scrollPosition: \(firstIndex+1) + \(scrollPosition ?? "0")")
             Task(priority: .background) {
                 self.imageManager.removeImage(urlString: self.cats[firstIndex].imageUrl)
             }
@@ -116,5 +121,11 @@ class CatsFeedViewModel {
                 }
             }
         }
+    }
+
+    private func appendUniqueCats(_ newCats: [CatModel]) {
+        let existingIds = Set(cats.map { $0.id })
+        let uniqueNewCats = newCats.filter { !existingIds.contains($0.id) }
+        cats.append(contentsOf: uniqueNewCats)
     }
 }
