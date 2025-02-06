@@ -23,10 +23,10 @@ class MockAPIClient: NSObject, APIClientProtocol {
         }
 
         if isEmpty {
-            return try await decodeJson(mockfile: "cats-empty", decoder: JSONDecoder())
+            return try await decodeJson(mockfile: "cats-empty", decoder: decoder)
         }
         if let mockfile = endpoint.mockFile {
-            return try await decodeJson(mockfile: mockfile, decoder: JSONDecoder())
+            return try await decodeJson(mockfile: mockfile, decoder: decoder)
         }
         throw CatsError.networkError
     }
