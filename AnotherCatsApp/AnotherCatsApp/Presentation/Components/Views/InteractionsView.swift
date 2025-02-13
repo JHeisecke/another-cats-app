@@ -9,15 +9,26 @@ import SwiftUI
 
 struct InteractionsView: View {
 
+    @Environment(\.deviceOrientation) private var orientation
     var interactionPressed: () -> Void
 
     var body: some View {
+        if orientation.isLandscape {
+            interactionsStack
+                .padding(.horizontal)
+        } else {
+            interactionsStack
+                .padding()
+                .padding(.bottom)
+        }
+    }
+
+    private var interactionsStack: some View {
         HStack {
             likeButton
             Spacer()
             dislikeButton
         }
-        .padding()
     }
 
     private var likeButton: some View {

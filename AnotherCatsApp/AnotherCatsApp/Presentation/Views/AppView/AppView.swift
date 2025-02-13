@@ -10,12 +10,17 @@ import SwiftUI
 struct AppView: View {
 
     let catFeedViewModel: CatsFeedViewModel
+    @State private var orientation = UIDeviceOrientation.unknown
 
     var body: some View {
         CatsFeedView(
             viewModel: catFeedViewModel
         )
         .preferredColorScheme(.light)
+        .onRotate { newOrientation in
+            orientation = newOrientation
+        }
+        .environment(\.deviceOrientation, orientation)
     }
 }
 

@@ -35,7 +35,6 @@ struct CatsFeedView: View {
                     )
                 }
             }
-
         }
         .task {
             await viewModel.getCatsFeed()
@@ -74,6 +73,7 @@ struct CatsFeedView: View {
                         .anyButton {
                             onCatPressed(cat)
                         }
+                        .highPriorityGesture(DragGesture())
                         .accessibilityIdentifier(AccessibilityIdentifiers.catImage(cat.id))
                     }
                 }
@@ -89,7 +89,6 @@ struct CatsFeedView: View {
             InteractionsView {
                 onInteractionsPressed()
             }
-            .padding(.bottom)
         }
     }
 

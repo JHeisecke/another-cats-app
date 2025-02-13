@@ -10,6 +10,7 @@ import SwiftUI
 struct CatDetailView: View {
 
     @Environment(\.dismiss) private var dismiss
+    @Environment(\.deviceOrientation) private var orientation
 
     let cat: CatModel
 
@@ -79,6 +80,7 @@ struct CatDetailView: View {
         }
         .padding()
         .padding(.bottom)
+        .frame(maxWidth: 500)
     }
 
     private func infoRow(label: String, value: String) -> some View {

@@ -9,6 +9,8 @@ import SwiftUI
 
 struct HeroCellView: View {
 
+    @Environment(\.deviceOrientation) private var orientation
+
     var title: String?
     var subtitle: String?
     var imageName: String?
@@ -27,21 +29,25 @@ struct HeroCellView: View {
             }
         }
         .overlay(alignment: .bottomTrailing) {
-            VStack(alignment: .leading, spacing: 4) {
-                if let title {
-                    Text(title)
-                        .font(.headline)
-                }
-                if let subtitle {
-                    Text(subtitle)
-                        .font(.subheadline)
-                }
-            }
-            .foregroundStyle(.white)
-            .padding(16)
-            .frame(maxWidth: .infinity, alignment: .leading)
-            .addingGradientBackgroundForText()
+            description
+                .addingGradientBackgroundForText()
         }
+    }
+
+    private var description: some View {
+        VStack(alignment: .leading, spacing: 4) {
+            if let title {
+                Text(title)
+                    .font(.headline)
+            }
+            if let subtitle {
+                Text(subtitle)
+                    .font(.subheadline)
+            }
+        }
+        .foregroundStyle(.white)
+        .padding(16)
+        .frame(maxWidth: .infinity, alignment: orientation.isLandscape ? .center : .leading)
     }
 }
 
